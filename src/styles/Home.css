@@ -558,3 +558,137 @@
     font-size: 2rem;
   }
 }
+
+/* Custom styles for Landed layout */
+body {
+  background-color: #fef5e7;
+}
+
+#page-wrapper {
+  background-color: #fef5e7;
+}
+
+#banner {
+  background: linear-gradient(135deg, #fef5e7 0%, #fef3c7 100%);
+  position: relative;
+}
+
+#banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at 50% 20%, rgba(217, 119, 6, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.banner .content {
+  position: relative;
+  z-index: 2;
+}
+
+.banner .image {
+  position: relative;
+}
+
+.hero-placeholder {
+  background: linear-gradient(135deg, #fef5e7 0%, #fef3c7 100%);
+  border: 2px dashed #d97706;
+  border-radius: 8px;
+  padding: 3rem;
+  text-align: center;
+  color: #78350f;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spotlight {
+  background: #fef5e7;
+  margin: 2rem 0;
+}
+
+.spotlight .content {
+  background: #fef5e7;
+}
+
+.placeholder-section {
+  background: linear-gradient(135deg, #fef5e7 0%, #fef3c7 100%);
+  border: 2px dashed #d97706;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  color: #78350f;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-item-landed {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.service-item-landed h3 {
+  color: #d97706;
+  margin-bottom: 0.5rem;
+}
+
+.project-preview {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.project-preview h3 {
+  color: #78350f;
+  margin-bottom: 0.5rem;
+}
+
+.project-preview p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.cta {
+  text-align: center;
+}
+
+#footer {
+  background: #fef5e7;
+}
+
+#footer ul.icons a {
+  color: #d97706;
+}
+
+#footer ul.icons a:hover {
+  color: #78350f;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 736px) {
+  .hero-placeholder {
+    min-height: 200px;
+    padding: 2rem;
+  }
+
+  .placeholder-section {
+    min-height: 150px;
+    padding: 1rem;
+  }
+
+  .service-item-landed,
+  .project-preview {
+    padding: 1rem;
+  }
+}

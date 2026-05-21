@@ -1,9 +1,11 @@
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import '../styles/Navbar.css'
 
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const location = useLocation()
 
   useEffect(() => {
     const handleScroll = () => {
@@ -14,19 +16,35 @@ export default function Navbar() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
+  useEffect(() => {
+    setIsMobileMenuOpen(false)
+  }, [location])
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
   return (
-    <nav className={`navbar ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="navbar-container">
-        <Link to="/" className="navbar-logo">
-          Jens
-        </Link>
-        <ul className="navbar-menu">
-          <li><Link to="/">home</Link></li>
-          <li><Link to="/about">over mij</Link></li>
-          <li><Link to="/projects">projecten</Link></li>
-          <li><Link to="/contact">contact</Link></li>
+    <header id="header">
+      <h1 id="logo">
+        <Link to="/">Jens</Link>
+      </h1>
+      <nav id="nav">
+        <ul className={isMobileMenuOpen ? 'active' : ''}>
+          <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
+          <li>
+            <Link to="#" onClick={(e) => { e.preventDefault(); toggleMobileMenu(); }}>Menu</Link>
+            <ul>
+              <li><Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>Over mij</Link></li>
+              <li><Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''}>Projecten</Link></li>
+              <li><Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link></li>
+            </ul>
+          </li>
+          <li><Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>Over mij</Link></li>
+          <li><Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''}>Projecten</Link></li>
+          <li><Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link></li>
         </ul>
-      </div>
-    </nav>
+      </nav>
+    </header>
   )
 }
