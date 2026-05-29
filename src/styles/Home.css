@@ -68,7 +68,7 @@
 /* Home Container */
 .home {
   width: 100%;
-  background-color: #fef5e7;
+  background-color: #0a0a0a;
 }
 
 .home section {
@@ -88,7 +88,7 @@
   align-items: center;
   justify-content: center;
   padding: 120px 0 5rem;
-  background: linear-gradient(135deg, #fef5e7 0%, #fef3c7 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -120,7 +120,7 @@
   font-weight: 900;
   line-height: 1.2;
   margin-bottom: 1.5rem;
-  color: #44403c;
+  color: #FFD700;
   letter-spacing: -2px;
   animation: slideFromLeft 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   max-width: 1000px;
@@ -131,7 +131,7 @@
 .hero-subtitle {
   font-size: 1.5rem;
   font-weight: 300;
-  color: #78350f;
+  color: rgba(255, 215, 0, 0.75);
   margin-bottom: 2.5rem;
   letter-spacing: 0.5px;
   animation: slideFromRight 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
@@ -150,15 +150,15 @@
 }
 
 .hero .btn-secondary {
-  border: 2px solid #d97706;
-  color: #d97706;
+  border: 2px solid #D97706;
+  color: #D97706;
   background-color: rgba(217, 119, 6, 0.1);
 }
 
 .hero .btn-secondary:hover {
-  background-color: #d97706;
-  color: #ffffff;
-  border-color: #d97706;
+  background-color: #D97706;
+  color: #1a1a1a;
+  border-color: #D97706;
 }
 
 /* Buttons */
@@ -204,21 +204,21 @@
 }
 
 .btn-primary {
-  background-color: #d97706;
-  color: #ffffff;
+  background-color: #D97706;
+  color: #1a1a1a;
 }
 
 .btn-primary:hover {
-  background-color: #b45309;
+  background-color: #B45309;
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 8px 20px rgba(217, 119, 6, 0.3);
-  color: #ffffff;
+  color: #1a1a1a;
 }
 
 .btn-secondary {
   background-color: transparent;
-  color: #44403c;
-  border: 2px solid #44403c;
+  color: #FFD700;
+  border: 2px solid #FFD700;
 }
 
 .btn-secondary::before {
@@ -226,8 +226,8 @@
 }
 
 .btn-secondary:hover {
-  background-color: #44403c;
-  color: #ffffff;
+  background-color: #FFD700;
+  color: #1a1a1a;
   transform: translateY(-2px) scale(1.05);
   box-shadow: 0 8px 20px rgba(68, 64, 60, 0.3);
 }
@@ -249,7 +249,7 @@
 /* Who Am I Section */
 .who-am-i {
   padding: 5rem 2rem;
-  background-color: #fef5e7;
+  background-color: #0a0a0a;
   border-top: 1px solid rgba(217, 119, 6,0.1);
 }
 
@@ -264,14 +264,14 @@
 .who-content p {
   font-size: 1.25rem;
   line-height: 1.8;
-  color: #78350f;
+  color: rgba(255, 215, 0, 0.75);
   font-weight: 300;
 }
 
 /* What I Do Section */
 .what-i-do {
   padding: 5rem 2rem;
-  background-color: #fef5e7;
+  background-color: #0a0a0a;
 }
 
 .services-grid {
@@ -287,11 +287,11 @@
   border: 1px solid rgba(217, 119, 6, 0.1);
   border-radius: 8px;
   transition: all 0.3s ease;
-  background-color: #ffffff;
+  background-color: #1a1a1a;
 }
 
 .service-item:hover {
-  border-color: #d97706;
+  border-color: #D97706;
   transform: translateY(-8px);
   box-shadow: 0 20px 50px rgba(217, 119, 6, 0.15);
 }
@@ -299,21 +299,21 @@
 .service-item h3 {
   font-size: 1.3rem;
   margin-bottom: 1rem;
-  color: #44403c;
+  color: #FFD700;
   font-weight: 700;
 }
 
 .service-item p {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #78350f;
+  color: rgba(255, 215, 0, 0.75);
   font-weight: 300;
 }
 
 /* Featured Works Section */
 .featured-works {
   padding: 5rem 2rem;
-  background-color: #fef5e7;
+  background-color: #0a0a0a;
   border-top: 1px solid rgba(217, 119, 6, 0.1);
 }
 
@@ -328,7 +328,7 @@
 }
 
 .work-card {
-  background-color: #ffffff;
+  background-color: #1a1a1a;
   border: 1px solid rgba(217, 119, 6, 0.1);
   border-radius: 8px;
   overflow: hidden;
@@ -341,7 +341,7 @@
 }
 
 .work-card:hover {
-  border-color: #d97706;
+  border-color: #D97706;
   transform: translateY(-10px);
   box-shadow: 0 25px 60px rgba(217, 119, 6, 0.2);
 }
@@ -349,11 +349,11 @@
 .work-image {
   width: 100%;
   height: 250px;
-  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  background: linear-gradient(135deg, #111111 0%, #1a1a1a 100%);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #b45309;
+  color: #B45309;
   font-weight: 500;
 }
 
@@ -367,12 +367,12 @@
 .work-info h3 {
   font-size: 1.3rem;
   margin-bottom: 0.5rem;
-  color: #44403c;
+  color: #FFD700;
 }
 
 .work-desc {
   font-size: 0.95rem;
-  color: #78350f;
+  color: rgba(255, 215, 0, 0.75);
   margin-bottom: 1rem;
   flex-grow: 1;
   font-weight: 300;
@@ -380,7 +380,7 @@
 
 .work-meta {
   font-size: 0.85rem;
-  color: #78350f;
+  color: rgba(255, 215, 0, 0.75);
   font-weight: 300;
 }
 
@@ -394,7 +394,7 @@
 .view-all {
   font-size: 1.1rem;
   font-weight: 400;
-  color: #d97706;
+  color: #D97706;
   text-decoration: none;
   display: inline-flex;
   align-items: center;
@@ -404,14 +404,14 @@
 }
 
 .view-all:hover {
-  color: #b45309;
+  color: #B45309;
   gap: 1.2rem;
 }
 
 /* Skills Section */
 .skills {
   padding: 5rem 2rem;
-  background-color: #fef5e7;
+  background-color: #0a0a0a;
   border-top: 1px solid rgba(217, 119, 6, 0.1);
 }
 
@@ -434,7 +434,7 @@
 .skill-column h4 {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #d97706;
+  color: #D97706;
   margin-bottom: 1.5rem;
   letter-spacing: 1px;
 }
@@ -445,7 +445,7 @@
 }
 
 .tech-list li {
-  color: #78350f;
+  color: rgba(255, 215, 0, 0.75);
   font-size: 0.95rem;
   margin-bottom: 0.8rem;
   font-weight: 300;
@@ -455,7 +455,7 @@
 /* Final CTA Section */
 .final-cta {
   padding: 5rem 2rem 3rem;
-  background: linear-gradient(135deg, #fef5e7 0%, #fef3c7 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
   text-align: center;
   border-top: 1px solid rgba(217, 119, 6, 0.1);
   position: relative;
@@ -486,7 +486,7 @@
 
 .final-cta p {
   font-size: 1.25rem;
-  color: #78350f;
+  color: rgba(255, 215, 0, 0.75);
   margin-bottom: 2.5rem;
   font-weight: 300;
 }
@@ -556,5 +556,139 @@
 
   section h2 {
     font-size: 2rem;
+  }
+}
+
+/* Custom styles for Landed layout */
+body {
+  background-color: #0a0a0a;
+}
+
+#page-wrapper {
+  background-color: #0a0a0a;
+}
+
+#banner {
+  background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
+  position: relative;
+}
+
+#banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(ellipse at 50% 20%, rgba(217, 119, 6, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.banner .content {
+  position: relative;
+  z-index: 2;
+}
+
+.banner .image {
+  position: relative;
+}
+
+.hero-placeholder {
+  background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
+  border: 2px dashed #D97706;
+  border-radius: 8px;
+  padding: 3rem;
+  text-align: center;
+  color: rgba(255, 215, 0, 0.75);
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.spotlight {
+  background: #0a0a0a;
+  margin: 2rem 0;
+}
+
+.spotlight .content {
+  background: #0a0a0a;
+}
+
+.placeholder-section {
+  background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
+  border: 2px dashed #D97706;
+  border-radius: 8px;
+  padding: 2rem;
+  text-align: center;
+  color: rgba(255, 215, 0, 0.75);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.service-item-landed {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.service-item-landed h3 {
+  color: #D97706;
+  margin-bottom: 0.5rem;
+}
+
+.project-preview {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.project-preview h3 {
+  color: rgba(255, 215, 0, 0.75);
+  margin-bottom: 0.5rem;
+}
+
+.project-preview p {
+  color: rgba(255, 215, 0, 0.6);
+  font-size: 0.9rem;
+}
+
+.cta {
+  text-align: center;
+}
+
+#footer {
+  background: #0a0a0a;
+}
+
+#footer ul.icons a {
+  color: #D97706;
+}
+
+#footer ul.icons a:hover {
+  color: rgba(255, 215, 0, 0.75);
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 736px) {
+  .hero-placeholder {
+    min-height: 200px;
+    padding: 2rem;
+  }
+
+  .placeholder-section {
+    min-height: 150px;
+    padding: 1rem;
+  }
+
+  .service-item-landed,
+  .project-preview {
+    padding: 1rem;
   }
 }

@@ -45,7 +45,7 @@
 /* Contact Page */
 .contact {
   width: 100%;
-  background-color: #fef5e7;
+  background-color: #0a0a0a;
 }
 
 .section-wrapper {
@@ -61,7 +61,7 @@
   align-items: center;
   justify-content: center;
   padding: 100px 2rem 5rem;
-  background: linear-gradient(135deg, #fef5e7 0%, #fef3c7 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
   position: relative;
   overflow: hidden;
   text-align: center;
@@ -87,7 +87,7 @@
 .hero-subtitle {
   font-size: 1.25rem;
   font-weight: 300;
-  color: #78350f;
+  color: rgba(255, 215, 0, 0.75);
   animation: slideFromRight 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
   margin-top: 1rem;
   max-width: 700px;
@@ -100,7 +100,7 @@
 /* Contact Methods Section */
 .contact-methods-section {
   padding: 5rem 2rem;
-  background-color: #fef5e7;
+  background-color: #0a0a0a;
   border-top: 1px solid rgba(217, 119, 6,0.1);
 }
 
@@ -113,7 +113,7 @@
 }
 
 .contact-card {
-  background-color: #ffffff;
+  background-color: #1a1a1a;
   padding: 2.5rem 2rem;
   border-radius: 8px;
   border: 1px solid rgba(217, 119, 6,0.1);
@@ -127,7 +127,7 @@
 }
 
 .contact-card:hover {
-  border-color: #d97706;
+  border-color: #D97706;
   transform: translateY(-10px);
   box-shadow: 0 25px 60px rgba(217, 119, 6,0.2);
 }
@@ -140,13 +140,13 @@
 
 .contact-card h3 {
   font-size: 1.2rem;
-  color: #44403c;
+  color: #FFD700;
   margin-bottom: 0.8rem;
   font-weight: 700;
 }
 
 .contact-card p {
-  color: #78350f;
+  color: rgba(255, 215, 0, 0.75);
   font-size: 0.9rem;
   font-weight: 300;
   margin: 0;

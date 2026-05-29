@@ -1,150 +1,247 @@
-import { Link } from 'react-router-dom'
-import { useScrollAnimation } from '../hooks/useScrollAnimation'
+import { Link, useLocation } from 'react-router-dom'
+import { useEffect, useState, useRef } from 'react'
 import { projects } from '../data/projects'
 import '../styles/Home.css'
 import '../styles/scrollAnimations.css'
+import '../styles/landed/main.css'
+import '../styles/landed/fontawesome-all.min.css'
 
 export default function Home() {
   useScrollAnimation()
+  const [isScrolled, setIsScrolled] = useState(false)
+  const headerRef = useRef(null)
+  const location = useLocation()
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  useEffect(() => {
+    if (headerRef.current) {
+      headerRef.current.className = isScrolled ? 'scrolled' : ''
+    }
+  }, [isScrolled])
 
   return (
-    <div className="home">
-      {/* Hero Section */}
-      <section className="hero">
-        <div className="hero-content">
-          <h1>Ik ben Jens,<br />Software Developer</h1>
-          <p className="hero-subtitle">digitale oplossingen bouwen die ertoe doen</p>
-          <div className="hero-cta">
-            <Link to="/projects" className="btn btn-primary">
-              mijn werk bekijken
-            </Link>
-            <Link to="/contact" className="btn btn-secondary">
-              contact opnemen
-            </Link>
-          </div>
+    <div id="page-wrapper">
+      {/* Header */}
+      <header id="header" ref={headerRef}>
+        <h1 id="logo">
+          <Link to="/">Jens</Link>
+        </h1>
+        <nav id="nav">
+          <ul>
+            <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
+            <li>
+              <Link to="#">Menu</Link>
+              <ul>
+                <li><Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>Over mij</Link></li>
+                <li><Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''}>Projecten</Link></li>
+                <li><Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link></li>
+              </ul>
+            </li>
+            <li><Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>Over mij</Link></li>
+            <li><Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''}>Projecten</Link></li>
+            <li><Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link></li>
+          </ul>
+        </nav>
+      </header>
+      {/* Banner */}
+      <section id="banner">
+        <div className="content">
+          <header>
+            <h2>Jens van Duinkerken</h2>
+            <p>Software Developer die digitale oplossingen bouwt<br />
+            met passie en precisie</p>
+          </header>
+          <span className="image">
+            <div className="hero-placeholder">
+              <h3>Mijn Portfolio</h3>
+            </div>
+          </span>
         </div>
+        <a href="#one" className="goto-next scrolly">Next</a>
       </section>
 
-      {/* Who I Am Section */}
-      <section className="who-am-i">
-        <div className="section-wrapper">
-          <h2>wie ben ik</h2>
-          <div className="who-content">
-            <p>Ik ben een 19-jarige student softwareontwikkeling uit Nederland. Ik ben altijd geïnteresseerd geweest in technologie en hoe dingen werken. Ik hou vooral van het bouwen van dingen zelf en het omzetten van ideeën in werkende digitale oplossingen.</p>
-            <p>Tot nu toe heb ik me vooral gericht op webontwikkeling met HTML, CSS, JavaScript en API's, maar ik ben nieuwsgierig naar veel verschillende gebieden binnen softwareontwikkeling. Ik geniet ervan om nieuwe vaardigheden te leren en mezelf uit te dagen met nieuwe projecten.</p>
+      {/* One */}
+      <section id="one" className="spotlight style1 bottom">
+        <span className="image fit main">
+          <div className="placeholder-section">
+            <h4>Wie ik ben</h4>
+          </div>
+        </span>
+        <div className="content">
+          <div className="container">
+            <div className="row">
+              <div className="col-4 col-12-medium">
+                <header>
+                  <h2>Jens van Duinkerken</h2>
+                  <p>19-jarige Software Developer student</p>
+                </header>
+              </div>
+              <div className="col-4 col-12-medium">
+                <p>
+                  Ik ben altijd geïnteresseerd geweest in technologie en hoe dingen werken.
+                  Het bouwen van digitale oplossingen die mensen helpen, dát is waar ik
+                  passie voor heb.
+                </p>
+              </div>
+              <div className="col-4 col-12-medium">
+                <p>
+                  Mijn focus ligt op webontwikkeling met moderne frameworks, maar ik ben
+                  altijd klaar om nieuwe uitdagingen aan te gaan en mijn kennis uit te breiden.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
+        <a href="#two" className="goto-next scrolly">Next</a>
       </section>
 
-      {/* What I Do Section */}
-      <section className="what-i-do">
-        <div className="section-wrapper">
-          <h2>wat ik doe</h2>
-          <div className="services-grid">
-            <div className="service-item">
+      {/* Two */}
+      <section id="two" className="spotlight style2 right">
+        <span className="image fit main">
+          <div className="placeholder-section">
+            <h4>Wat ik doe</h4>
+          </div>
+        </span>
+        <div className="content">
+          <header>
+            <h2>Mijn Kernvaardigheden</h2>
+            <p>Specialisaties in webontwikkeling en software engineering</p>
+          </header>
+          <div className="services-list">
+            <div className="service-item-landed">
               <h3>Webontwikkeling</h3>
-              <p>Ik bouw responsieve en gebruikersvriendelijke websites met HTML, CSS en JavaScript, met nadruk op schoon ontwerp en soepele functionaliteit.</p>
+              <p>Responsieve websites met HTML, CSS, JavaScript en moderne frameworks zoals React.</p>
             </div>
-            <div className="service-item">
+            <div className="service-item-landed">
               <h3>Frontend Engineering</h3>
-              <p>Ik creëer intuïtieve interfaces en dynamische gebruikerservaringen, waardoor webapplicaties tot leven komen met moderne frontend-technologieën en best practices.</p>
+              <p>Dynamische gebruikerservaringen en intuïtieve interfaces met moderne best practices.</p>
             </div>
-            <div className="service-item">
-              <h3>softwareprojecten</h3>
-              <p>Ik ontwikkel op maat gemaakte softwareoplossingen, experimenteer met verschillende programmeertalen en tools om problemen uit de praktijk efficiënt op te lossen.</p>
-            </div>
-            <div className="service-item">
-              <h3>Leren & Experimenteren</h3>
-              <p>Ik ben gepassioneerd over het verkennen van nieuwe gebieden in softwareontwikkeling, continu leren van nieuwe technologieën en verbeteren van mijn vaardigheden door praktische projecten.</p>
+            <div className="service-item-landed">
+              <h3>API Development</h3>
+              <p>Bouwen van RESTful APIs en integraties tussen verschillende systemen.</p>
             </div>
           </div>
+          <ul className="actions">
+            <li><Link to="/about" className="button">Meer over mij</Link></li>
+          </ul>
+        </div>
+        <a href="#three" className="goto-next scrolly">Next</a>
+      </section>
+
+      {/* Three */}
+      <section id="three" className="spotlight style3 left">
+        <span className="image fit main bottom">
+          <div className="placeholder-section">
+            <h4>Projecten</h4>
+          </div>
+        </span>
+        <div className="content">
+          <header>
+            <h2>Uitgelichte Projecten</h2>
+            <p>Recente werkstukken die mijn vaardigheden demonstreren</p>
+          </header>
+          <div className="featured-projects">
+            {projects.filter(p => p.featured).slice(0, 4).map((project) => (
+              <div key={project.id} className="project-preview">
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="button small">
+                  Bekijk meer
+                </a>
+              </div>
+            ))}
+          </div>
+          <ul className="actions">
+            <li><Link to="/projects" className="button">Alle projecten bekijken</Link></li>
+          </ul>
+        </div>
+        <a href="#four" className="goto-next scrolly">Next</a>
+      </section>
+
+      {/* Four */}
+      <section id="four" className="wrapper style1 special fade-up">
+        <div className="container">
+          <header className="major">
+            <h2>Technologie Stack</h2>
+            <p>De tools en technologieën die ik beheers</p>
+          </header>
+          <div className="box alt">
+            <div className="row gtr-uniform">
+              <section className="col-4 col-6-medium col-12-xsmall">
+                <span className="icon solid alt major fa-code"></span>
+                <h3>Frontend</h3>
+                <p>HTML, CSS, JavaScript, React, Bootstrap</p>
+              </section>
+              <section className="col-4 col-6-medium col-12-xsmall">
+                <span className="icon solid alt major fa-server"></span>
+                <h3>Backend</h3>
+                <p>Node.js, Express, APIs, MySQL, MongoDB</p>
+              </section>
+              <section className="col-4 col-6-medium col-12-xsmall">
+                <span className="icon solid alt major fa-tools"></span>
+                <h3>Tools</h3>
+                <p>Git, VS Code, Figma, Postman</p>
+              </section>
+              <section className="col-4 col-6-medium col-12-xsmall">
+                <span className="icon solid alt major fa-mobile-alt"></span>
+                <h3>Responsive</h3>
+                <p>Mobile-first design, Cross-browser compatibility</p>
+              </section>
+              <section className="col-4 col-6-medium col-12-xsmall">
+                <span className="icon solid alt major fa-rocket"></span>
+                <h3>Performance</h3>
+                <p>Optimalisatie, Snelheid, Best practices</p>
+              </section>
+              <section className="col-4 col-6-medium col-12-xsmall">
+                <span className="icon solid alt major fa-puzzle-piece"></span>
+                <h3>Problem-solving</h3>
+                <p>Analytisch denken, Creatieve oplossingen</p>
+              </section>
+            </div>
+          </div>
+          <footer className="major">
+            <ul className="actions special">
+              <li><Link to="/about" className="button">Meer skills zien</Link></li>
+            </ul>
+          </footer>
         </div>
       </section>
 
-      {/* Featured Works Section */}
-      <section className="featured-works">
-        <div className="section-wrapper">
-          <h2>uitgelichte projecten</h2>
-          <div className="works-grid">
-            {projects.filter(p => p.featured).map((project, index) => {
-              const isExternal = project.link && project.link.startsWith('http')
-              const Component = isExternal ? 'a' : Link
-              const props = isExternal
-                ? { href: project.link, target: '_blank', rel: 'noopener noreferrer' }
-                : { to: `/projects/${project.id}` }
-
-              return (
-                <Component key={project.id} {...props} className="work-card" style={{ animationDelay: `${index * 0.1}s` }}>
-                  <div className="work-image">
-                    <div className="placeholder">{project.title}</div>
-                  </div>
-                  <div className="work-info">
-                    <h3>{project.title}</h3>
-                    <p className="work-desc">{project.description}</p>
-                    <p className="work-meta">{project.tags.join(' • ')}</p>
-                  </div>
-                </Component>
-              )
-            })}
-          </div>
-          <div className="view-all-wrapper">
-            <Link to="/projects" className="view-all">
-              alle projecten bekijken
-              <span className="arrow">→</span>
+      {/* Five */}
+      <section id="five" className="wrapper style2 special fade">
+        <div className="container">
+          <header>
+            <h2>Laten we samenwerken</h2>
+            <p>Klaar om iets geweldigs te bouwen?</p>
+          </header>
+          <div className="cta">
+            <Link to="/contact" className="button primary large">
+              Neem contact op
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Skills Section */}
-      <section className="skills">
-        <div className="section-wrapper">
-          <h2>vaardigheden & technologieën</h2>
-          <div className="skills-columns">
-            <div className="skill-column">
-              <h4>frontend</h4>
-              <ul className="tech-list">
-                <li>HTML & CSS</li>
-                <li>JavaScript</li>
-                <li>Bootstrap</li>
-                <li>React</li>
-                <li>Responsive Design</li>
-              </ul>
-            </div>
-            <div className="skill-column">
-              <h4>backend & databases</h4>
-              <ul className="tech-list">
-                <li>Node.js</li>
-                <li>Express</li>
-                <li>APIs</li>
-                <li>MySQL</li>
-                <li>MongoDB</li>
-              </ul>
-            </div>
-            <div className="skill-column">
-              <h4>tools & zachte vaardigheden</h4>
-              <ul className="tech-list">
-                <li>Git & GitHub</li>
-                <li>VS Code</li>
-                <li>Figma</li>
-                <li>Postman</li>
-                <li>Probleemoplossing & Creativiteit</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="final-cta">
-        <div className="section-wrapper cta-content">
-          <h2>klaar om iets<br />geweldigs te bouwen?</h2>
-          <p>Laten we digitale ervaringen creëren die ertoe doen</p>
-          <Link to="/contact" className="btn btn-primary btn-large">
-            contact opnemen
-          </Link>
-        </div>
-      </section>
+      {/* Footer */}
+      <footer id="footer">
+        <ul className="icons">
+          <li><a href="https://github.com" className="icon brands alt fa-github"><span className="label">GitHub</span></a></li>
+          <li><a href="https://linkedin.com" className="icon brands alt fa-linkedin-in"><span className="label">LinkedIn</span></a></li>
+          <li><a href="mailto:jens@example.com" className="icon solid alt fa-envelope"><span className="label">Email</span></a></li>
+        </ul>
+        <ul className="copyright">
+          <li>&copy; 2024 Jens van Duinkerken. All rights reserved.</li>
+          <li>Design: <a href="http://html5up.net">HTML5 UP</a> | Modified by Jens</li>
+        </ul>
+      </footer>
     </div>
   )
 }
