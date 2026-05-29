@@ -6,7 +6,7 @@ const portfolioData = [
         id: 1,
         title: 'Portfolio Website',
         description: 'Mijn persoonlijke portfolio website waarop mijn vaardigheden, projecten en ervaring als software developer worden getoond.',
-        image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=400&h=300&fit=crop',
+        image: 'assets/images/quantum-cloud.jpg',
         tech: ['React', 'Vite', 'CSS', 'Responsive Design'],
         link: 'https://jens.vanduinkerken.net'
     },
@@ -14,7 +14,7 @@ const portfolioData = [
         id: 2,
         title: 'Pulse 720',
         description: 'Een moderne AI-aangedreven applicatie met Vue.js frontend en Python backend. Ik heb significante bijdragen geleverd aan zowel frontend als AI integratie.',
-        image: 'https://images.unsplash.com/photo-1516534775068-bb6534e7f2ff?w=400&h=300&fit=crop',
+        image: 'assets/images/neural-network.jpg',
         tech: ['Vue.js', 'Python', 'SQL', 'AI API', 'REST API'],
         link: 'https://app.pulse720.com'
     },
@@ -22,7 +22,7 @@ const portfolioData = [
         id: 3,
         title: 'PadPlanner',
         description: 'Een gratis webapplicatie die willekeurige loop-, hardloop- en fietsroutes genereert. Gebruikers kunnen routes aanmaken op basis van afstand of duur, en ze exporteren in GPX-formaat.',
-        image: 'https://images.unsplash.com/photo-1524661135-423995f22d0b?w=400&h=300&fit=crop',
+        image: 'assets/images/iot-matrix.jpg',
         tech: ['React', 'Maps API', 'Geolocation', 'GPX Export'],
         link: 'https://padplanner.vercel.app'
     },
@@ -30,7 +30,7 @@ const portfolioData = [
         id: 4,
         title: 'Curo.one',
         description: 'Een moderne CMS waarmee ondernemers hun websites kunnen beheren via natuurlijke taalcommando\'s in plaats van traditionele interfaces. Inclusief beveiliging, SEO en snelle laadtijden.',
-        image: 'https://images.unsplash.com/photo-1517694712176-ce15262a9861?w=400&h=300&fit=crop',
+        image: 'assets/images/data-nexus.jpg',
         tech: ['CMS', 'AI', 'Natural Language', 'Security'],
         link: 'https://curo.one'
     }
