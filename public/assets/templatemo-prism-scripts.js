@@ -38,21 +38,24 @@ const portfolioData = [
 
 // Skills data
 const skillsData = [
-    { name: 'HTML5', icon: '📄', level: 95, category: 'frontend' },
-    { name: 'CSS3', icon: '🎨', level: 90, category: 'frontend' },
-    { name: 'JavaScript', icon: '⚡', level: 85, category: 'frontend' },
-    { name: 'React', icon: '⚛️', level: 80, category: 'frontend' },
+    { name: 'React', icon: '⚛️', level: 85, category: 'frontend' },
+    { name: 'Vue.js', icon: '💚', level: 80, category: 'frontend' },
+    { name: 'Vite', icon: '⚡', level: 85, category: 'frontend' },
+    { name: 'Responsive Design', icon: '📱', level: 90, category: 'frontend' },
+
+    { name: 'Python', icon: '🐍', level: 80, category: 'backend' },
+    { name: 'REST APIs', icon: '🔌', level: 85, category: 'backend' },
+    { name: 'SQL', icon: '🗄️', level: 75, category: 'backend' },
     { name: 'Node.js', icon: '🟢', level: 75, category: 'backend' },
-    { name: 'Express', icon: '🚂', level: 70, category: 'backend' },
-    { name: 'MySQL', icon: '🐬', level: 65, category: 'backend' },
-    { name: 'MongoDB', icon: '🍃', level: 60, category: 'backend' },
-    { name: 'Git', icon: '🔀', level: 85, category: 'cloud' },
-    { name: 'Docker', icon: '🐳', level: 55, category: 'cloud' },
-    { name: 'AWS', icon: '☁️', level: 50, category: 'cloud' },
-    { name: 'Python', icon: '🐍', level: 70, category: 'emerging' },
-    { name: 'TypeScript', icon: '📘', level: 65, category: 'emerging' },
-    { name: 'GraphQL', icon: '◈', level: 60, category: 'emerging' },
-    { name: 'AI/ML', icon: '🤖', level: 45, category: 'emerging' }
+
+    { name: 'Git & GitHub', icon: '🔀', level: 90, category: 'cloud' },
+    { name: 'Deployment', icon: '🚀', level: 80, category: 'cloud' },
+    { name: 'Performance Optimization', icon: '⚙️', level: 75, category: 'cloud' },
+
+    { name: 'AI Integration', icon: '🤖', level: 75, category: 'emerging' },
+    { name: 'Natural Language Processing', icon: '💬', level: 70, category: 'emerging' },
+    { name: 'Maps & Geolocation', icon: '📍', level: 80, category: 'emerging' },
+    { name: 'CMS Development', icon: '📝', level: 75, category: 'emerging' }
 ];
 
 // Initialize carousel
