@@ -257,28 +257,6 @@ function initializeSkills() {
     displaySkills();
 }
 
-// Animate statistics numbers
-function animateStats() {
-    const statNumbers = document.querySelectorAll('.stat-number');
-
-    statNumbers.forEach(stat => {
-        const target = parseFloat(stat.dataset.target);
-        const increment = target / 50;
-        let current = 0;
-
-        const updateNumber = () => {
-            current += increment;
-            if (current < target) {
-                stat.textContent = target % 1 === 0 ? Math.floor(current) : current.toFixed(1);
-                requestAnimationFrame(updateNumber);
-            } else {
-                stat.textContent = target % 1 === 0 ? target : target.toFixed(1);
-            }
-        };
-
-        updateNumber();
-    });
-}
 
 // Initialize particles for philosophy section
 function initParticles() {
@@ -347,7 +325,6 @@ window.addEventListener('resize', () => {
 document.addEventListener('DOMContentLoaded', function() {
     initializeCarousel();
     initializeSkills();
-    animateStats();
     initParticles();
 });
 
