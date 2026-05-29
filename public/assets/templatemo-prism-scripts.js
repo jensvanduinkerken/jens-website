@@ -14,7 +14,7 @@ const portfolioData = [
         id: 2,
         title: 'Pulse 720',
         description: 'Een moderne AI-aangedreven applicatie met Vue.js frontend en Python backend. Ik heb significante bijdragen geleverd aan zowel frontend als AI integratie.',
-        image: 'https://images.unsplash.com/photo-1677442d019cecf8fda91143842578314?w=400&h=300&fit=crop',
+        image: 'https://images.unsplash.com/photo-1516534775068-bb6534e7f2ff?w=400&h=300&fit=crop',
         tech: ['Vue.js', 'Python', 'SQL', 'AI API', 'REST API'],
         link: 'https://app.pulse720.com'
     },
@@ -30,7 +30,7 @@ const portfolioData = [
         id: 4,
         title: 'Curo.one',
         description: 'Een moderne CMS waarmee ondernemers hun websites kunnen beheren via natuurlijke taalcommando\'s in plaats van traditionele interfaces. Inclusief beveiliging, SEO en snelle laadtijden.',
-        image: 'https://images.unsplash.com/photo-1460925895917-adf4e9fb6e4d?w=400&h=300&fit=crop',
+        image: 'https://images.unsplash.com/photo-1517694712176-ce15262a9861?w=400&h=300&fit=crop',
         tech: ['CMS', 'AI', 'Natural Language', 'Security'],
         link: 'https://curo.one'
     }
