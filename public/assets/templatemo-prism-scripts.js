@@ -6,7 +6,7 @@ const portfolioData = [
         id: 1,
         title: 'Portfolio Website',
         description: 'Mijn persoonlijke portfolio website waarop mijn vaardigheden, projecten en ervaring als software developer worden getoond.',
-        image: 'assets/images/quantum-cloud.jpg',
+        image: 'assets/images/website.jpg',
         tech: ['React', 'Vite', 'CSS', 'Responsive Design'],
         link: 'https://jens.vanduinkerken.net'
     },
@@ -14,7 +14,7 @@ const portfolioData = [
         id: 2,
         title: 'Pulse 720',
         description: 'Een moderne AI-aangedreven applicatie met Vue.js frontend en Python backend. Ik heb significante bijdragen geleverd aan zowel frontend als AI integratie.',
-        image: 'assets/images/neural-network.jpg',
+        image: 'assets/images/pulse720.png',
         tech: ['Vue.js', 'Python', 'SQL', 'AI API', 'REST API'],
         link: 'https://app.pulse720.com'
     },
@@ -22,7 +22,7 @@ const portfolioData = [
         id: 3,
         title: 'PadPlanner',
         description: 'Een gratis webapplicatie die willekeurige loop-, hardloop- en fietsroutes genereert. Gebruikers kunnen routes aanmaken op basis van afstand of duur, en ze exporteren in GPX-formaat.',
-        image: 'assets/images/iot-matrix.jpg',
+        image: 'assets/images/route.jpg',
         tech: ['React', 'Maps API', 'Geolocation', 'GPX Export'],
         link: 'https://padplanner.vercel.app'
     },
@@ -30,7 +30,7 @@ const portfolioData = [
         id: 4,
         title: 'Curo.one',
         description: 'Een moderne CMS waarmee ondernemers hun websites kunnen beheren via natuurlijke taalcommando\'s in plaats van traditionele interfaces. Inclusief beveiliging, SEO en snelle laadtijden.',
-        image: 'assets/images/data-nexus.jpg',
+        image: 'assets/images/curoone.webp',
         tech: ['CMS', 'AI', 'Natural Language', 'Security'],
         link: 'https://curo.one'
     }
