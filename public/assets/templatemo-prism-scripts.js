@@ -401,3 +401,38 @@ window.addEventListener('scroll', updateActiveNav);
 
 // Initialize navigation
 updateActiveNav();
+
+// Initialize scroll-triggered animations
+function initScrollAnimations() {
+	const observerOptions = {
+		threshold: 0.1,
+		rootMargin: '0px 0px -50px 0px'
+	};
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach((entry) => {
+			if (entry.isIntersecting) {
+				const element = entry.target;
+				const animationType = element.dataset.animation || 'fade-up';
+				const delay = element.dataset.delay || '0ms';
+
+				element.style.transitionDelay = delay;
+				element.classList.add('anim-' + animationType);
+				element.classList.add('animated');
+				observer.unobserve(element);
+			}
+		});
+	}, observerOptions);
+
+	// Observe all elements with animate-on-scroll class
+	document.querySelectorAll('.animate-on-scroll').forEach((element) => {
+		observer.observe(element);
+	});
+}
+
+// Call on DOM ready
+if (document.readyState === 'loading') {
+	document.addEventListener('DOMContentLoaded', initScrollAnimations);
+} else {
+	initScrollAnimations();
+}

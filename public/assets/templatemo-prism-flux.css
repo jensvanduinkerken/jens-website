@@ -1930,3 +1930,30 @@ a.info-item {
 		text-align: center;
 	}
 }
+
+/* Scroll-triggered animations */
+.animate-on-scroll {
+	opacity: 0;
+	transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.animate-on-scroll.animated {
+	opacity: 1;
+	transform: none !important;
+}
+
+.anim-fade-up {
+	transform: translateY(40px);
+}
+
+.anim-fade-left {
+	transform: translateX(-50px);
+}
+
+.anim-fade-right {
+	transform: translateX(50px);
+}
+
+.anim-fade-in {
+	opacity: 0;
+}
