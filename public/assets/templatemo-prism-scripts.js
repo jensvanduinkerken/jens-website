@@ -4,24 +4,35 @@
 const portfolioData = [
     {
         id: 1,
-        title: 'E-commerce Platform',
-        description: 'Volledige webshop met React en Node.js',
+        title: 'Portfolio Website',
+        description: 'Mijn persoonlijke portfolio website waarop mijn vaardigheden, projecten en ervaring als software developer worden getoond.',
         image: 'assets/images/project1.jpg',
-        tech: ['React', 'Node.js', 'MongoDB', 'Stripe']
+        tech: ['React', 'Vite', 'CSS', 'Responsive Design'],
+        link: 'https://jens.vanduinkerken.net'
     },
     {
         id: 2,
-        title: 'Task Management App',
-        description: 'Productiviteitstool met real-time updates',
+        title: 'Pulse 720',
+        description: 'Een moderne AI-aangedreven applicatie met Vue.js frontend en Python backend. Ik heb significante bijdragen geleverd aan zowel frontend als AI integratie.',
         image: 'assets/images/project2.jpg',
-        tech: ['React', 'Firebase', 'Material UI', 'React Query']
+        tech: ['Vue.js', 'Python', 'SQL', 'AI API', 'REST API'],
+        link: 'https://app.pulse720.com'
     },
     {
         id: 3,
-        title: 'Portfolio Website',
-        description: 'Modern portfolio met prisma thema en animaties',
+        title: 'PadPlanner',
+        description: 'Een gratis webapplicatie die willekeurige loop-, hardloop- en fietsroutes genereert. Gebruikers kunnen routes aanmaken op basis van afstand of duur, en ze exporteren in GPX-formaat.',
         image: 'assets/images/project3.jpg',
-        tech: ['HTML', 'CSS', 'JavaScript', 'GSAP']
+        tech: ['React', 'Maps API', 'Geolocation', 'GPX Export'],
+        link: 'https://padplanner.vercel.app'
+    },
+    {
+        id: 4,
+        title: 'Curo.one',
+        description: 'Een moderne CMS waarmee ondernemers hun websites kunnen beheren via natuurlijke taalcommando\'s in plaats van traditionele interfaces. Inclusief beveiliging, SEO en snelle laadtijden.',
+        image: 'assets/images/project4.jpg',
+        tech: ['CMS', 'AI', 'Natural Language', 'Security'],
+        link: 'https://curo.one'
     }
 ];
 
@@ -72,7 +83,7 @@ function createCarouselItem(data, index) {
             <h3 class="card-title">${data.title}</h3>
             <p class="card-description">${data.description}</p>
             <div class="card-tech">${techBadges}</div>
-            <button class="card-cta" onclick="scrollToSection('stats')">Bekijk Meer</button>
+            <a href="${data.link}" target="_blank" rel="noopener noreferrer" class="card-cta">Bekijk Meer</a>
         </div>
     `;
 

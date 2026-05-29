@@ -51,7 +51,6 @@ export default function Home() {
           </ul>
         </nav>
       </header>
-    <div id="page-wrapper">
       {/* Banner */}
       <section id="banner">
         <div className="content">
@@ -150,10 +149,13 @@ export default function Home() {
             <p>Recente werkstukken die mijn vaardigheden demonstreren</p>
           </header>
           <div className="featured-projects">
-            {projects.filter(p => p.featured).slice(0, 3).map((project) => (
+            {projects.filter(p => p.featured).slice(0, 4).map((project) => (
               <div key={project.id} className="project-preview">
                 <h3>{project.title}</h3>
                 <p>{project.description}</p>
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="button small">
+                  Bekijk meer
+                </a>
               </div>
             ))}
           </div>
