@@ -45,7 +45,7 @@
 /* About Page */
 .about {
   width: 100%;
-  background-color: #fef5e7;
+  background-color: #0a0a0a;
 }
 
 .section-wrapper {
@@ -61,7 +61,7 @@
   align-items: center;
   justify-content: center;
   padding: 100px 2rem 5rem;
-  background: linear-gradient(135deg, #fef5e7 0%, #fef3c7 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
   position: relative;
   overflow: hidden;
 }
@@ -86,7 +86,7 @@
 .hero-subtitle {
   font-size: 1.5rem;
   font-weight: 300;
-  color: #78350f;
+  color: rgba(255, 215, 0, 0.75);
   animation: slideFromRight 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
   margin-top: 1rem;
   letter-spacing: 0.5px;
@@ -95,7 +95,7 @@
 /* Story Section */
 .story {
   padding: 5rem 2rem;
-  background-color: #fef5e7;
+  background-color: #0a0a0a;
   border-top: 1px solid rgba(217, 119, 6,0.1);
 }
 
@@ -109,14 +109,14 @@
 .story-content p {
   font-size: 1.1rem;
   line-height: 1.8;
-  color: #78350f;
+  color: rgba(255, 215, 0, 0.75);
   font-weight: 300;
 }
 
 /* Skills Section */
 .skills-detailed {
   padding: 5rem 2rem;
-  background-color: #fef5e7;
+  background-color: #0a0a0a;
   border-top: 1px solid rgba(217, 119, 6,0.1);
 }
 
@@ -134,7 +134,7 @@
 
 .skill-category h3 {
   font-size: 1.2rem;
-  color: #d97706;
+  color: #D97706;
   margin-bottom: 1.5rem;
   font-weight: 700;
   letter-spacing: 1px;
@@ -149,7 +149,7 @@
 }
 
 .skill-list li {
-  color: #78350f;
+  color: rgba(255, 215, 0, 0.75);
   font-size: 0.95rem;
   font-weight: 300;
   line-height: 1.6;
@@ -161,14 +161,14 @@
   content: '→';
   position: absolute;
   left: 0;
-  color: #d97706;
+  color: #D97706;
   font-weight: 700;
 }
 
 /* Approach Section */
 .approach {
   padding: 5rem 2rem;
-  background-color: #fef5e7;
+  background-color: #0a0a0a;
   border-top: 1px solid rgba(217, 119, 6,0.1);
 }
 
@@ -188,14 +188,14 @@
 }
 
 .approach-card:hover {
-  border-color: #d97706;
+  border-color: #D97706;
   transform: translateY(-8px);
   box-shadow: 0 20px 50px rgba(217, 119, 6,0.15);
 }
 
 .approach-card h3 {
   font-size: 1.2rem;
-  color: #44403c;
+  color: #FFD700;
   margin-bottom: 1rem;
   font-weight: 700;
 }
@@ -203,14 +203,14 @@
 .approach-card p {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: #78350f;
+  color: rgba(255, 215, 0, 0.75);
   font-weight: 300;
 }
 
 /* CTA Section */
 .about-cta {
   padding: 5rem 2rem 3rem;
-  background: linear-gradient(135deg, #fef5e7 0%, #fef3c7 100%);
+  background: linear-gradient(135deg, #0a0a0a 0%, #111111 100%);
   text-align: center;
   border-top: 1px solid rgba(217, 119, 6,0.1);
   position: relative;
@@ -239,7 +239,7 @@
 
 .about-cta p {
   font-size: 1.1rem;
-  color: #78350f;
+  color: rgba(255, 215, 0, 0.75);
   margin-bottom: 2rem;
   animation: slideFromRight 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) 0.1s both;
 }
@@ -287,12 +287,12 @@
 }
 
 .btn-primary {
-  background-color: #d97706;
-  color: #ffffff;
+  background-color: #D97706;
+  color: #1a1a1a;
 }
 
 .btn-primary:hover {
-  background-color: #b45309;
+  background-color: #B45309;
   transform: translateY(-3px);
   box-shadow: 0 15px 40px rgba(217, 119, 6,0.4);
 }

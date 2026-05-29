@@ -22,14 +22,14 @@ https://templatemo.com/tm-600-prism-flux
 	--carbon-light: #2a2a2a;
 	--metal-dark: #3a3a3a;
 	--metal-light: #4a4a4a;
-	--accent-red: #ff3333;
-	--accent-blue: #00a8ff;
-	--accent-green: #00ff88;
-	--accent-purple: #9945ff;
-	--accent-cyan: #00ffff;
-	--text-primary: #ffffff;
-	--text-secondary: #b0b0b0;
-	--text-dim: #808080;
+	--accent-red: #B45309;
+	--accent-blue: #D97706;
+	--accent-green: #F59E0B;
+	--accent-purple: #FFD700;
+	--accent-cyan: #FBBF24;
+	--text-primary: #FFD700;
+	--text-secondary: rgba(255, 215, 0, 0.7);
+	--text-dim: rgba(255, 215, 0, 0.5);
 }
 
 html {

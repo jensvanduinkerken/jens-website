@@ -4,7 +4,7 @@
   top: 0;
   left: 0;
   right: 0;
-  background: rgba(254, 245, 231, 0.95);
+  background: rgba(10, 10, 10, 0.95);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid rgba(217, 119, 6, 0.1);
   z-index: 100001;
@@ -18,14 +18,14 @@
 #header h1 a {
   font-size: 1.5rem;
   font-weight: 700;
-  color: #44403c;
+  color: #FFD700;
   text-decoration: none;
   transition: color 0.3s ease;
   letter-spacing: -1px;
 }
 
 #header h1 a:hover {
-  color: #d97706;
+  color: #D97706;
 }
 
 #nav {
@@ -52,7 +52,7 @@
 
 #nav li a {
   font-size: 1rem;
-  color: #44403c;
+  color: #FFD700;
   text-decoration: none;
   padding: 0 1.2rem;
   height: 100%;
@@ -62,11 +62,11 @@
 }
 
 #nav li a:hover {
-  color: #d97706;
+  color: #D97706;
 }
 
 #nav li a.active {
-  color: #d97706;
+  color: #D97706;
 }
 
 /* Dropdown menu styles */
@@ -76,7 +76,7 @@
   top: 100%;
   left: 0;
   width: 200px;
-  background: rgba(254, 245, 231, 0.98);
+  background: rgba(10, 10, 10, 0.98);
   border: 1px solid rgba(217, 119, 6, 0.2);
   border-top: 0;
   padding: 0;
@@ -120,7 +120,7 @@
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(254, 245, 231, 0.98);
+    background: rgba(10, 10, 10, 0.98);
     display: none;
   }
 
@@ -158,7 +158,7 @@
     top: 1rem;
     right: 1rem;
     z-index: 100003;
-    background: #d97706;
+    background: #D97706;
     color: white;
     border: none;
     padding: 0.5rem 1rem;
@@ -168,7 +168,7 @@
   }
 
   .menu-toggle:hover {
-    background: #78350f;
+    background: rgba(255, 215, 0, 0.75);
   }
 }
 

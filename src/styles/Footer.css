@@ -1,7 +1,7 @@
 /* Footer */
 .footer {
-  background-color: #44403c;
-  color: #fef5e7;
+  background-color: #FFD700;
+  color: #0a0a0a;
   padding: 4rem 2rem 2rem;
   border-top: 1px solid rgba(217, 119, 6, 0.2);
 }
@@ -17,14 +17,14 @@
 
 .footer-section h3 {
   font-size: 1.3rem;
-  color: #fef5e7;
+  color: #0a0a0a;
   margin-bottom: 1rem;
   font-weight: 700;
 }
 
 .footer-section h4 {
   font-size: 1.1rem;
-  color: #d97706;
+  color: #D97706;
   margin-bottom: 1rem;
   font-weight: 700;
   letter-spacing: 1px;
@@ -54,7 +54,7 @@
 }
 
 .footer-section a:hover {
-  color: #d97706;
+  color: #D97706;
 }
 
 .footer-bottom {
@@ -66,7 +66,7 @@
 }
 
 .footer-bottom p {
-  color: #78350f;
+  color: rgba(255, 215, 0, 0.75);
   font-size: 0.9rem;
   margin: 0.5rem 0;
 }
