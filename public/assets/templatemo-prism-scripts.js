@@ -401,16 +401,3 @@ window.addEventListener('scroll', updateActiveNav);
 
 // Initialize navigation
 updateActiveNav();
-
-// Contact Form Handler with Formspree
-function initContactForm() {
-    const contactForm = document.getElementById('contactForm');
-
-    if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-            const submitBtn = contactForm.querySelector('.submit-btn');
-            submitBtn.textContent = 'Verzenden...';
-            submitBtn.disabled = true;
-        });
-    }
-}
