@@ -214,6 +214,13 @@ p { margin: 0; }
 .card--wide .card__title { font-size: 56px; }
 .card__text { font-size: 18px; line-height: 1.5; max-width: 560px; }
 .card--dark .card__text { color: #DCD5C6; }
+.card__list { list-style: none; margin: 0; padding: 0; }
+.card__list li {
+  display: flex; flex-direction: column; gap: 4px; padding: 14px 0;
+  border-top: 2px dashed var(--ink); font-family: var(--font-display); font-weight: 800; font-size: 22px; line-height: 1.15; letter-spacing: -.02em;
+}
+.card__list li:last-child { padding-bottom: 0; }
+.card__list-name { font-size: 13px; color: var(--muted); letter-spacing: 0; }
 .card__foot { display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
 .card__links { display: flex; flex-wrap: wrap; column-gap: 28px; }
 .card__link { display: inline-flex; align-items: center; min-height: 48px; font-weight: 600; font-size: 18px; }
@@ -337,6 +344,8 @@ p { margin: 0; }
   .card__media--blue { height: 160px; font-size: 28px; }
   .card__title, .card--wide .card__title { font-size: 36px; }
   .card__text { font-size: 16px; }
+  .card__list li { font-size: 19px; padding: 12px 0; }
+  .card__list-name { font-size: 12px; }
   .card__link { font-size: 17px; }
   .chip { font-size: 12px; padding: 6px 11px; }
 

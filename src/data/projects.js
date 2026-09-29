@@ -1,5 +1,6 @@
 // variant: 'wide-accent' | 'narrow-tilt-r' | 'narrow-tilt-l' | 'wide-dark'
-// media: { image } | { label } | { blue } | { belt }
+// media (optioneel): { image } | { label } | { blue } | { belt }
+// list (optioneel): [{ name, what }]
 export const projects = [
   {
     id: 'padplanner',
@@ -13,21 +14,26 @@ export const projects = [
     links: [{ label: 'Bekijk project', href: 'https://padplanner.vercel.app' }],
   },
   {
-    id: 'excellent-taste',
+    id: 'school',
     variant: 'narrow-tilt-r',
     type: 'School',
-    year: '2026',
-    title: 'Excellent Taste',
-    text: 'Webapp voor een restaurant. Full-stack, van database tot frontend.',
-    media: { label: '[ SCREENSHOT EXCELLENT TASTE ]' },
-    tags: ['React', 'Tailwind', 'Supabase'],
+    year: 'MBO',
+    title: 'Schoolprojecten & hackathons',
+    text: 'Op school heb ik heel veel kleine projecten gebouwd, en ook genoeg dingetjes die nooit af zijn gekomen. Een greep:',
+    list: [
+      { name: 'Examenproject', what: 'app voor een rijschool' },
+      { name: 'Excellent Taste', what: 'restaurant-app, full-stack' },
+      { name: 'Hackathon', what: 'digitale laboratoria in het Nederlandse onderwijs verbinden' },
+      { name: 'Hackathon', what: 'jongeren vaker naar buiten krijgen' },
+    ],
+    tags: [],
     links: [],
   },
   {
     id: 'raket',
     variant: 'narrow-tilt-l',
     type: 'Stage',
-    year: '[ JAAR ]',
+    year: '2026',
     title: 'Stage bij Raket',
     text: 'Meegebouwd aan Pulse720 en Curo.one in een echt dev-team. Ik werkte aan UI-componenten in Vue.js en aan de koppeling met AI-API\'s.',
     media: { blue: 'Pulse720 × Curo.one' },
