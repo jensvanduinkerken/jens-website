@@ -1,58 +1,51 @@
+// variant: 'wide-accent' | 'narrow-tilt-r' | 'narrow-tilt-l' | 'wide-dark'
+// media: { image } | { label } | { blue } | { belt }
 export const projects = [
   {
-    id: 'portfolio',
-    title: 'Portfolio Website',
-    description: 'Mijn persoonlijke portfolio website waarop mijn vaardigheden, projecten en ervaring als software developer worden getoond.',
-    longDescription: 'Een volledig ontworpen en gebouwde portfolio met moderne React en Vite. De website showcases mijn werk, skills en ervaring op een visueel aantrekkelijke manier met smooth animations en responsive design.',
-    link: 'https://jens.vanduinkerken.net',
-    tags: ['React', 'Vite', 'CSS', 'Responsive Design'],
-    featured: true,
-    impact: 'Een professionele online presence die potentiële werkgevers en klanten indruk maakt. Verhoogde zichtbaarheid en betere positionering in zoekmachines.',
-    lessonsLearned: 'Geleerd hoe belangrijk goed design en user experience zijn. Animaties en visuele hiërarchie dragen significant bij aan de indruk die een website maakt.'
-  },
-  {
-    id: 'pulse720',
-    title: 'Pulse 720',
-    description: 'Een moderne AI-aangedreven applicatie met Vue.js frontend en Python backend. Ik heb significante bijdragen geleverd aan zowel frontend als AI integratie.',
-    longDescription: 'Pulse 720 is een geavanceerde applicatie die AI-technologie combineert met een intuïtieve Vue.js interface. Ik heb gewerkt aan de integratie van AI APIs, het bouwen van responsive UI componenten en het optimaliseren van database queries.',
-    link: 'https://app.pulse720.com',
-    tags: ['Vue.js', 'Python', 'SQL', 'AI API', 'REST API'],
-    featured: true,
-    impact: 'Succesvol operationeel met duizenden gebruikers. AI integratie haalt automatisering naar 95% efficiency, wat significante tijd bespaart voor eindgebruikers.',
-    lessonsLearned: 'Begrip gekregen van full-stack development en hoe frontend en backend samen moeten werken. Ook waardevolle ervaring met AI API integratie en het omgaan met real-time data.'
-  },
-  {
     id: 'padplanner',
+    variant: 'wide-accent',
+    type: 'Side project',
+    year: '2026',
     title: 'PadPlanner',
-    description: 'Een gratis webapplicatie die willekeurige loop-, hardloop- en fietsroutes genereert. Gebruikers kunnen routes aanmaken op basis van afstand of duur, en ze exporteren in GPX-formaat.',
-    longDescription: 'PadPlanner is een geïmplementeerd proof-of-concept dat het gebruik van maps APIs demonstreert. De applicatie genereert werkende routes op basis van gebruiker parameters, integreert met GPS/geolocation en biedt GPX export voor compatibiliteit met populaire fitness apps.',
-    link: 'https://padplanner.vercel.app',
-    tags: ['React', 'Maps API', 'Geolocation', 'GPX Export'],
-    featured: true,
-    impact: 'Nuttige tool voor sporters en wandelaars. Vele gebruikers hebben de applicatie gebruikt om nieuwe routes te ontdekken. Gedemonstreerd potentieel voor commercialisatie.',
-    lessonsLearned: 'Diepte ervaring opgedaan met Google Maps API en geolocation services. Leerde over geospatiale data en route-generatie algoritmes.'
+    text: 'Een generator voor rondwandelingen: kies je startpunt en afstand, en je krijgt een route die weer bij je voordeur eindigt. Idee van mijn broer, gebouwd door mij.',
+    media: { image: '/assets/images/route.jpg', label: '[ SCREENSHOT PADPLANNER ]' },
+    tags: ['React', 'Vercel'],
+    links: [{ label: 'Bekijk project', href: 'https://padplanner.vercel.app' }],
   },
   {
-    id: 'curo',
-    title: 'Curo.one',
-    description: 'Een moderne CMS waarmee ondernemers hun websites kunnen beheren via natuurlijke taalcommando\'s in plaats van traditionele interfaces. Inclusief beveiliging, SEO en snelle laadtijden.',
-    longDescription: 'Curo is een innovatief CMS dat AI en natural language processing gebruikt om website beheer te revolutioneren. In plaats van complexe interfaces kunnen gebruikers hun websites beheren door simpele commando\'s in het Nederlands. Bevat security best practices en is geoptimaliseerd voor performance.',
-    link: 'https://curo.one',
-    tags: ['CMS', 'AI', 'Natural Language', 'Security'],
-    featured: true,
-    impact: 'Een baanbrekend CMS dat het gemak van websitebeheer democratiseert voor niet-technische gebruikers. Potentieel grote markt voor small business en entrepreneurs.',
-    lessonsLearned: 'Ingewikkelde AI integratie en NLP geleerd. Begrepen hoe machine learning models werken en hoe ze ingezet kunnen worden in praktische applicaties.'
+    id: 'excellent-taste',
+    variant: 'narrow-tilt-r',
+    type: 'School',
+    year: '2026',
+    title: 'Excellent Taste',
+    text: 'Webapp voor een restaurant. Full-stack, van database tot frontend.',
+    media: { label: '[ SCREENSHOT EXCELLENT TASTE ]' },
+    tags: ['React', 'Tailwind', 'Supabase'],
+    links: [],
   },
   {
-    id: 'padplanner',
-    title: 'Padplanner',
-    description: 'Een webapplicatie waarmee je wandelroutes kunt genereren. Je kunt aangeven of je wandelt, hardloopt of fietst, en de route worden gegenereerd op basis van de gewenste duur of afstand. Alle routes keren terug naar het startpunt.',
-    link: 'https://padplanner.vercel.app/',
-    tags: ['React', 'Mapping API', 'Route Planning', 'Web App'],
-    featured: true
+    id: 'raket',
+    variant: 'narrow-tilt-l',
+    type: 'Stage',
+    year: '[ JAAR ]',
+    title: 'Stage bij Raket',
+    text: 'Meegebouwd aan Pulse720 en Curo.one in een echt dev-team. Ik werkte aan UI-componenten in Vue.js en aan de koppeling met AI-API\'s.',
+    media: { blue: 'Pulse720 × Curo.one' },
+    tags: [],
+    links: [
+      { label: 'Pulse720', href: 'https://app.pulse720.com' },
+      { label: 'Curo.one', href: 'https://curo.one' },
+    ],
+  },
+  {
+    id: 'fabriek',
+    variant: 'wide-dark',
+    type: 'Experiment',
+    badge: 'in de maak',
+    title: 'De 3D-fabriek',
+    text: 'Een portfolio als fabriek in Three.js, waar je als bezoeker doorheen rijdt. Nog lang niet af, wel heel leuk om aan te werken.',
+    media: { belt: '[ RENDER 3D-FABRIEK ]' },
+    tags: ['Three.js', 'WebGL'],
+    links: [],
   },
 ]
-
-export const getProjectById = (id) => {
-  return projects.find(p => p.id === id)
-}

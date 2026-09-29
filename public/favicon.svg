@@ -1,18 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256">
-  <!-- Dark background -->
-  <rect width="256" height="256" fill="#1f2937" rx="56"/>
-
-  <!-- Subtle accent ring -->
-  <circle cx="128" cy="128" r="110" fill="none" stroke="#e5e7eb" stroke-width="2" opacity="0.15"/>
-
-  <!-- Letter J -->
-  <g transform="translate(128, 128)">
-    <!-- Main vertical stroke of J (properly oriented) -->
-    <path d="M 18 -50 L 18 25 Q 18 50 0 60 L -20 60"
-          stroke="#f3f4f6"
-          stroke-width="22"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <g transform="rotate(-8 32 32)">
+    <rect x="6" y="6" width="52" height="52" rx="14" fill="#FFC52E" stroke="#17150F" stroke-width="4"/>
+    <text x="32" y="44" text-anchor="middle" font-family="Georgia, sans-serif" font-weight="800" font-size="34" fill="#17150F">J</text>
   </g>
 </svg>

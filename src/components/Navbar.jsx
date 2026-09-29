@@ -1,49 +1,47 @@
-import { Link, useLocation } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import '../styles/Navbar.css'
+import { site } from '../data/site'
+
+const links = [
+  { href: '#werk', label: 'Werk' },
+  { href: '#over', label: 'Over mij' },
+  { href: '#contact', label: 'Contact' },
+]
 
 export default function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const location = useLocation()
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
+    if (!open) return
+    const onKey = (e) => { if (e.key === 'Escape') setOpen(false) }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
-
-  useEffect(() => {
-    setIsMobileMenuOpen(false)
-  }, [location])
-
-  const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen)
-  }
+  const close = () => setOpen(false)
 
   return (
-    <header id="header">
-      <h1 id="logo">
-        <Link to="/">Jens</Link>
-      </h1>
-      <nav id="nav">
-        <ul className={isMobileMenuOpen ? 'active' : ''}>
-          <li><Link to="/" className={location.pathname === '/' ? 'active' : ''}>Home</Link></li>
-          <li>
-            <Link to="#" onClick={(e) => { e.preventDefault(); toggleMobileMenu(); }}>Menu</Link>
-            <ul>
-              <li><Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>Over mij</Link></li>
-              <li><Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''}>Projecten</Link></li>
-              <li><Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link></li>
-            </ul>
-          </li>
-          <li><Link to="/about" className={location.pathname === '/about' ? 'active' : ''}>Over mij</Link></li>
-          <li><Link to="/projects" className={location.pathname === '/projects' ? 'active' : ''}>Projecten</Link></li>
-          <li><Link to="/contact" className={location.pathname === '/contact' ? 'active' : ''}>Contact</Link></li>
-        </ul>
+    <header className="container">
+      <nav className="nav" aria-label="Hoofdmenu">
+        <a href="#top" className="logo"><span className="logo__mark">J</span><span>jens.</span></a>
+        <div className="nav__links">
+          {links.map(l => <a key={l.href} href={l.href}>{l.label}</a>)}
+          <a href={`mailto:${site.email}`} className="btn btn--dark btn--sm">Mail me</a>
+        </div>
+        <button
+          className="nav__toggle"
+          aria-label={open ? 'Menu sluiten' : 'Menu openen'}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen(o => !o)}
+        >
+          <span></span><span></span>
+        </button>
+        {open && (
+          <div id="mobile-menu" className="nav__menu">
+            {links.map(l => <a key={l.href} href={l.href} onClick={close}>{l.label}</a>)}
+            <a href={`mailto:${site.email}`} className="btn btn--dark" onClick={close}>Mail me</a>
+          </div>
+        )}
       </nav>
     </header>
   )
