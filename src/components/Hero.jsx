@@ -1,4 +1,4 @@
-import { site } from '../data/site'
+import { site, age } from '../data/site'
 
 function StatusSticker({ className }) {
   return (
@@ -28,7 +28,7 @@ export default function Hero() {
             : <div className="polaroid__img mono">[ FOTO VAN JOU ]</div>}
           <div className="polaroid__caption mono">dit ben ik, echt waar</div>
         </div>
-        <div className="sticker sticker--round">19 jaar<br />uit Apeldoorn</div>
+        <div className="sticker sticker--round">{age()} jaar<br />uit Apeldoorn</div>
         <div className="sticker sticker--pill mono">Node.js + React</div>
         <StatusSticker className="status-desktop" />
       </div>

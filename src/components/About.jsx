@@ -1,11 +1,11 @@
-import { route } from '../data/site'
+import { route, age } from '../data/site'
 
 export default function About() {
   return (
     <section id="over" className="about container">
       <div className="about__text reveal">
         <h2 className="section-title">Over mij</h2>
-        <p>Ik ben Jens, 19 jaar, uit Apeldoorn. Na mijn MBO Software Development en een stage bij Raket zit ik nu op Windesheim voor Business IT &amp; Management.</p>
+        <p>Ik ben Jens, {age()} jaar, uit Apeldoorn. Na mijn MBO Software Development en een stage bij Raket zit ik nu op Windesheim voor Business IT &amp; Management.</p>
         <p>Ik bouw het liefst dingen die echt gebruikt worden, van een app voor een rijschool tot een routeplanner voor wandelingen. Deze zomer zat ik in Málaga voor een bootcamp over content strategy.</p>
       </div>
 
