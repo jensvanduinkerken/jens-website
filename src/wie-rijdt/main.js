@@ -51,18 +51,24 @@ function decide() {
   const rand = seededRandom([todayKey(), going.join(','), drinking.join(','), round].join('|'))
   const pick = pool => pool[Math.floor(rand() * pool.length)]
 
+  // terug: altijd iemand die niet drinkt, de BOB
   const terug = sober.length ? pick(sober) : null
-  // heen: liefst iemand die drinkt, anders iemand anders dan de terugrijder
-  let heenPool = drinking.length ? drinking : going.filter(id => id !== terug)
-  if (!heenPool.length) heenPool = going
+  // heen: liefst een andere niet-drinker (die mag daarna wel drinken),
+  // pas als die er niet is iemand die drinkt (rijden vóór het drinken mag)
+  const others = sober.filter(id => id !== terug)
+  const heenPool = others.length ? others : drinking.length ? drinking : going
   const heen = pick(heenPool)
 
   const why = []
-  if (!terug) why.push('Iedereen drinkt, dus niemand kan terugrijden. Regel een BOB of taxi.')
-  else if (drinking.length) why.push(`${list(drinking)}, dus ${nameOf(terug)} rijdt terug.`)
-  if (drinking.length && sober.length) why.push(`Wie drinkt rijdt heen: ${nameOf(heen)}.`)
-  if (heen === terug) why.push(`${nameOf(heen)} is de enige die kan rijden.`)
-  if (!drinking.length && heen !== terug) why.push('Puur geluk, voor allebei de ritten.')
+  if (drinking.length) why.push(`${list(drinking)}.`)
+  if (!terug) why.push('Niemand kan terugrijden. Regel een BOB of taxi.')
+  else if (heen === terug) why.push(`${nameOf(heen)} is de enige die kan rijden en is de BOB.`)
+  else {
+    why.push(drinkers.has(heen)
+      ? `${nameOf(heen)} rijdt heen vóór het drinken.`
+      : `${nameOf(heen)} rijdt heen en mag daarna drinken.`)
+    why.push(`${nameOf(terug)} is de BOB.`)
+  }
   return { heen, terug, why: why.join(' ') }
 }
 
