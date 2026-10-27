@@ -1,7 +1,7 @@
 import '../styles/index.css'
 import './wie-rijdt.css'
 
-const DEFAULT_NAMES = ['Kind 1', 'Kind 2', 'Kind 3', 'Kind 4']
+const DEFAULT_NAMES = ['Bente', 'Ties', 'Mack', 'Jens']
 const LS_KEY = 'wie-rijdt-namen'
 const $ = id => document.getElementById(id)
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches
