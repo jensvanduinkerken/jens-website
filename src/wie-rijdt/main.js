@@ -1,197 +1,150 @@
 import '../styles/index.css'
 import './wie-rijdt.css'
 
-const DEFAULT = { kids: [
-  { id: 'k1', name: 'Kind 1' }, { id: 'k2', name: 'Kind 2' },
-  { id: 'k3', name: 'Kind 3' }, { id: 'k4', name: 'Kind 4' },
-], rides: [] }
-const LS_KEY = 'wie-rijdt-state'
+const DEFAULT_NAMES = ['Kind 1', 'Kind 2', 'Kind 3', 'Kind 4']
+const LS_KEY = 'wie-rijdt-namen'
 const $ = id => document.getElementById(id)
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches
 
-let state = loadLocal() || structuredClone(DEFAULT)
-const present = new Set(state.kids.map(k => k.id))
-let dir = 'heen'
-let mode = 'eerlijk'
-let lastRideId = null
+const kids = loadNames().map((name, i) => ({ id: 'k' + (i + 1), name }))
+const present = new Set(kids.map(k => k.id))
+const drinkers = new Set()
+let round = 1
 let spinning = false
 
-// ---- opslag: alleen in deze browser
-function loadLocal() {
-  try { const s = JSON.parse(localStorage.getItem(LS_KEY)); if (s && Array.isArray(s.kids)) return { kids: s.kids, rides: s.rides || [] } } catch {}
-  return null
+// ---- opslag: alleen de namen, in deze browser
+function loadNames() {
+  try {
+    const s = JSON.parse(localStorage.getItem(LS_KEY))
+    if (Array.isArray(s) && s.length === DEFAULT_NAMES.length) return s
+  } catch {}
+  return [...DEFAULT_NAMES]
 }
-function save() { try { localStorage.setItem(LS_KEY, JSON.stringify(state)) } catch {} }
+function saveNames() { try { localStorage.setItem(LS_KEY, JSON.stringify(kids.map(k => k.name))) } catch {} }
 
-// ---- logica
-const counts = () => {
-  const c = Object.fromEntries(state.kids.map(k => [k.id, 0]))
-  for (const r of state.rides) if (r.kidId in c) c[r.kidId]++
-  return c
+// ---- loten
+// Geen opgeslagen stand: het toeval start vanuit datum + keuzes + ronde,
+// zodat elke telefoon met dezelfde invoer dezelfde bestuurders kiest.
+const todayKey = () => new Date().toLocaleDateString('sv-SE') // JJJJ-MM-DD in lokale tijd
+
+function seededRandom(text) {
+  let h = 2166136261
+  for (let i = 0; i < text.length; i++) h = Math.imul(h ^ text.charCodeAt(i), 16777619)
+  return () => { // mulberry32
+    h = (h + 0x6D2B79F5) | 0
+    let t = Math.imul(h ^ (h >>> 15), 1 | h)
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296
+  }
 }
-const nameOf = id => (state.kids.find(k => k.id === id) || {}).name || '?'
 
-function pickCandidates() {
-  const ids = state.kids.map(k => k.id).filter(id => present.has(id))
-  if (!ids.length) return { pool: [], reason: '' }
-  if (mode === 'geluk') return { pool: ids, reason: 'Puur geluk: iedereen evenveel kans.' }
-  const c = counts()
-  const min = Math.min(...ids.map(id => c[id]))
-  let pool = ids.filter(id => c[id] === min)
-  // wie de vorige rit reed krijgt er niet twee achter elkaar als iemand anders gelijk staat
-  const prev = state.rides[state.rides.length - 1]
-  if (prev && pool.length > 1) pool = pool.filter(id => id !== prev.kidId)
-  const reason = pool.length === 1
-    ? `${nameOf(pool[0])} heeft het minst gereden (${min}×).`
-    : `${pool.map(nameOf).join(', ')} staan gelijk met ${min}×. Het lot beslist.`
-  return { pool, reason }
+const nameOf = id => kids.find(k => k.id === id)?.name ?? '?'
+const list = ids => ids.length > 1
+  ? `${ids.slice(0, -1).map(nameOf).join(', ')} en ${nameOf(ids.at(-1))} drinken`
+  : `${nameOf(ids[0])} drinkt`
+
+function decide() {
+  const going = kids.map(k => k.id).filter(id => present.has(id))
+  if (!going.length) return null
+  const drinking = going.filter(id => drinkers.has(id))
+  const sober = going.filter(id => !drinkers.has(id))
+  const rand = seededRandom([todayKey(), going.join(','), drinking.join(','), round].join('|'))
+  const pick = pool => pool[Math.floor(rand() * pool.length)]
+
+  const terug = sober.length ? pick(sober) : null
+  // heen: liefst iemand die drinkt, anders iemand anders dan de terugrijder
+  let heenPool = drinking.length ? drinking : going.filter(id => id !== terug)
+  if (!heenPool.length) heenPool = going
+  const heen = pick(heenPool)
+
+  const why = []
+  if (!terug) why.push('Iedereen drinkt, dus niemand kan terugrijden. Regel een BOB of taxi.')
+  else if (drinking.length) why.push(`${list(drinking)}, dus ${nameOf(terug)} rijdt terug.`)
+  if (drinking.length && sober.length) why.push(`Wie drinkt rijdt heen: ${nameOf(heen)}.`)
+  if (heen === terug) why.push(`${nameOf(heen)} is de enige die kan rijden.`)
+  if (!drinking.length && heen !== terug) why.push('Puur geluk, voor allebei de ritten.')
+  return { heen, terug, why: why.join(' ') }
 }
 
 function draw() {
   if (spinning) return
-  const { pool, reason } = pickCandidates()
-  if (!pool.length) { $('why').textContent = 'Kies eerst wie er mee gaat.'; return }
-  const winner = pool[Math.floor(crypto.getRandomValues(new Uint32Array(1))[0] / 2 ** 32 * pool.length)]
-  const showPool = state.kids.filter(k => present.has(k.id)).map(k => k.id)
+  const result = decide()
+  if (!result) { $('why').textContent = 'Kies eerst wie er mee gaat.'; return }
+  const going = kids.filter(k => present.has(k.id)).map(k => k.id)
+  const plates = ['heen', 'terug'].map(dir => ({ plate: $('plate-' + dir), name: $('name-' + dir), winner: result[dir] }))
   spinning = true
-  $('go').disabled = true; $('after').hidden = true; $('swaplist').hidden = true
+  $('go').disabled = true; $('after').hidden = true
   $('why').textContent = '…'
-  const plate = $('plate'); plate.classList.remove('is-win'); plate.classList.add('is-spin')
+  for (const p of plates) { p.plate.classList.remove('is-win'); p.plate.classList.add('is-spin') }
   const steps = reduceMotion ? 1 : 18 + Math.floor(Math.random() * 6)
   let i = 0, delay = 50
   const tick = () => {
     i++
     if (i >= steps) {
-      plate.classList.remove('is-spin'); void plate.offsetWidth; plate.classList.add('is-win')
-      $('plateName').textContent = nameOf(winner)
-      $('why').textContent = reason
-      record(winner)
+      for (const p of plates) {
+        p.plate.classList.remove('is-spin'); void p.plate.offsetWidth; p.plate.classList.add('is-win')
+        p.name.textContent = p.winner ? nameOf(p.winner) : 'BOB'
+      }
+      $('why').textContent = result.why
+      $('round').textContent = round > 1 ? `Ronde ${round}` : ''
       spinning = false; $('go').disabled = false; $('after').hidden = false
       return
     }
-    $('plateName').textContent = nameOf(showPool[i % showPool.length])
+    plates.forEach((p, j) => { p.name.textContent = nameOf(going[(i + j) % going.length]) })
     delay *= 1.13
     setTimeout(tick, delay)
   }
   tick()
 }
 
-function record(kidId, swappedFrom) {
-  const ride = { id: 'r' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6), kidId, dir, ts: Date.now() }
-  if (swappedFrom) ride.swappedFrom = swappedFrom
-  state.rides.push(ride)
-  if (state.rides.length > 400) state.rides = state.rides.slice(-400)
-  lastRideId = ride.id
-  render(); save()
-}
-
-function undo() {
-  if (!lastRideId) return
-  state.rides = state.rides.filter(r => r.id !== lastRideId)
-  lastRideId = null
-  $('after').hidden = true; $('swaplist').hidden = true
-  $('plateName').textContent = '? - ? - ?'
-  $('why').textContent = 'Rit is weggehaald. Kies opnieuw.'
-  render(); save()
-}
-
-function showSwap() {
-  const ride = state.rides.find(r => r.id === lastRideId)
-  if (!ride) return
-  const box = $('swaplist'); box.innerHTML = ''
-  const p = document.createElement('p'); p.textContent = `${nameOf(ride.kidId)} geeft de beurt aan:`; box.append(p)
-  for (const k of state.kids) {
-    if (k.id === ride.kidId || !present.has(k.id)) continue
-    const b = document.createElement('button'); b.type = 'button'; b.className = 'btn btn--light btn--sm'; b.textContent = k.name
-    b.onclick = () => {
-      const from = ride.kidId
-      state.rides = state.rides.filter(r => r.id !== lastRideId)
-      record(k.id, from)
-      $('plateName').textContent = k.name
-      $('why').textContent = `${nameOf(from)} gaf de beurt weg en houdt dus voorrang voor de volgende keer.`
-      box.hidden = true
-    }
-    box.append(b)
-  }
-  box.hidden = box.children.length <= 1
+function clearResult() {
+  round = 1
+  $('name-heen').textContent = $('name-terug').textContent = '? - ? - ?'
+  $('why').textContent = 'Tik op de knop om te kiezen.'
+  $('after').hidden = true
 }
 
 // ---- render
+function chip(k, on, onClick, extra = '') {
+  const b = document.createElement('button'); b.type = 'button'; b.className = 'rit-chip ' + extra
+  b.textContent = k.name; b.setAttribute('aria-pressed', on)
+  b.onclick = onClick
+  return b
+}
+
 function render() {
   const pres = $('present'); pres.innerHTML = ''
-  for (const k of state.kids) {
-    const b = document.createElement('button'); b.type = 'button'; b.className = 'rit-chip'
-    b.textContent = k.name; b.setAttribute('aria-pressed', present.has(k.id))
-    b.onclick = () => { present.has(k.id) ? present.delete(k.id) : present.add(k.id); render() }
-    pres.append(b)
-  }
+  for (const k of kids) pres.append(chip(k, present.has(k.id), () => {
+    present.has(k.id) ? present.delete(k.id) : present.add(k.id)
+    drinkers.delete(k.id)
+    clearResult(); render()
+  }))
 
-  const c = counts(), max = Math.max(1, ...Object.values(c))
-  const rows = $('rows'); rows.innerHTML = ''
-  for (const k of state.kids) {
-    const r = document.createElement('div'); r.className = 'rit-row'
-    const n = document.createElement('span'); n.className = 'rit-row__n'; n.textContent = k.name
-    const bar = document.createElement('div'); bar.className = 'rit-bar'
-    const fill = document.createElement('i'); fill.style.width = (c[k.id] / max * 100) + '%'; bar.append(fill)
-    const cnt = document.createElement('span'); cnt.className = 'rit-row__c mono'; cnt.textContent = c[k.id]
-    r.append(n, bar, cnt); rows.append(r)
+  const drink = $('drinkers'); drink.innerHTML = ''
+  for (const k of kids) {
+    if (!present.has(k.id)) continue
+    drink.append(chip(k, drinkers.has(k.id), () => {
+      drinkers.has(k.id) ? drinkers.delete(k.id) : drinkers.add(k.id)
+      clearResult(); render()
+    }, 'rit-chip--drink'))
   }
-
-  const { pool } = pickCandidates()
-  $('next').innerHTML = ''
-  if (mode === 'eerlijk' && pool.length) {
-    $('next').append('Volgende rit maakt kans: ')
-    const b = document.createElement('b'); b.textContent = pool.map(nameOf).join(', '); $('next').append(b)
-  }
-
-  const log = $('log'); log.innerHTML = ''
-  const recent = state.rides.slice(-15).reverse()
-  if (!recent.length) {
-    const li = document.createElement('li'); li.className = 'rit-empty'
-    li.textContent = 'Nog geen ritten. De eerste keuze komt hier te staan.'
-    log.append(li)
-  }
-  for (const r of recent) {
-    const li = document.createElement('li')
-    const t = document.createElement('time'); t.className = 'mono'
-    t.textContent = new Date(r.ts).toLocaleDateString('nl-NL', { day: 'numeric', month: 'short' })
-    const who = document.createElement('span'); who.textContent = nameOf(r.kidId)
-    if (r.swappedFrom) { const s = document.createElement('span'); s.className = 'rit-log__s'; s.textContent = `kreeg de beurt van ${nameOf(r.swappedFrom)}`; who.append(s) }
-    const d = document.createElement('span'); d.className = 'rit-log__d mono'; d.textContent = r.dir
-    li.append(t, who, d); log.append(li)
-  }
+  if (!drink.children.length) drink.textContent = '—'
 
   const names = $('names')
   if (!names.contains(document.activeElement)) {
     names.innerHTML = ''
-    state.kids.forEach((k, i) => {
+    kids.forEach((k, i) => {
       const inp = document.createElement('input'); inp.id = 'name-' + k.id; inp.value = k.name
-      inp.setAttribute('aria-label', `Naam kind ${i + 1}`); inp.maxLength = 20
-      inp.onchange = () => { k.name = inp.value.trim() || `Kind ${i + 1}`; render(); save() }
+      inp.setAttribute('aria-label', `Naam ${i + 1}`); inp.maxLength = 20
+      inp.onchange = () => { k.name = inp.value.trim() || DEFAULT_NAMES[i]; saveNames(); render() }
       names.append(inp)
     })
   }
 }
 
 // ---- events
+$('today').textContent = new Date().toLocaleDateString('nl-NL', { weekday: 'short', day: 'numeric', month: 'short' })
 $('go').onclick = draw
-$('undoBtn').onclick = undo
-$('swapBtn').onclick = showSwap
-for (const b of $('dir').querySelectorAll('button')) b.onclick = () => {
-  dir = b.dataset.dir
-  for (const o of $('dir').querySelectorAll('button')) o.setAttribute('aria-pressed', o === b)
-}
-$('modeBtn').onclick = () => {
-  mode = mode === 'eerlijk' ? 'geluk' : 'eerlijk'
-  $('modeName').textContent = mode === 'eerlijk' ? 'Eerlijk' : 'Puur geluk'
-  render()
-}
-$('resetBtn').onclick = () => { $('resetConfirm').hidden = false }
-$('resetNo').onclick = () => { $('resetConfirm').hidden = true }
-$('resetYes').onclick = () => {
-  state.rides = []; lastRideId = null; $('resetConfirm').hidden = true
-  $('plateName').textContent = '? - ? - ?'; $('why').textContent = 'Alles staat weer op nul.'
-  $('after').hidden = true; render(); save()
-}
+$('againBtn').onclick = () => { round++; draw() }
 
 render()
