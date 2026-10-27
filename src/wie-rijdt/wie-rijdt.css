@@ -32,8 +32,6 @@ button:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px 
 }
 .rit-chip[aria-pressed="true"] { background: var(--card); color: var(--ink); border-style: solid; box-shadow: 3px 3px 0 var(--ink); }
 .rit-chip[aria-pressed="true"]::before { content: "✓ "; }
-.rit-chip--drink[aria-pressed="true"] { background: var(--accent); }
-.rit-chip--drink[aria-pressed="true"]::before { content: "🍺 "; }
 .rit-hint { margin-top: 12px; font-size: 15px; color: var(--muted); }
 
 /* Het kenteken */

@@ -8,7 +8,6 @@ const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches
 
 const kids = loadNames().map((name, i) => ({ id: 'k' + (i + 1), name }))
 const present = new Set(kids.map(k => k.id))
-const drinkers = new Set()
 let round = 1
 let spinning = false
 
@@ -23,8 +22,8 @@ function loadNames() {
 function saveNames() { try { localStorage.setItem(LS_KEY, JSON.stringify(kids.map(k => k.name))) } catch {} }
 
 // ---- loten
-// Geen opgeslagen stand: het toeval start vanuit datum + keuzes + ronde,
-// zodat elke telefoon met dezelfde invoer dezelfde bestuurders kiest.
+// Geen opgeslagen stand: het toeval start vanuit datum + wie er meegaat + ronde,
+// zodat elke telefoon met dezelfde keuzes dezelfde bestuurders kiest.
 const todayKey = () => new Date().toLocaleDateString('sv-SE') // JJJJ-MM-DD in lokale tijd
 
 function seededRandom(text) {
@@ -39,37 +38,22 @@ function seededRandom(text) {
 }
 
 const nameOf = id => kids.find(k => k.id === id)?.name ?? '?'
-const list = ids => ids.length > 1
-  ? `${ids.slice(0, -1).map(nameOf).join(', ')} en ${nameOf(ids.at(-1))} drinken`
-  : `${nameOf(ids[0])} drinkt`
 
 function decide() {
   const going = kids.map(k => k.id).filter(id => present.has(id))
   if (!going.length) return null
-  const drinking = going.filter(id => drinkers.has(id))
-  const sober = going.filter(id => !drinkers.has(id))
-  const rand = seededRandom([todayKey(), going.join(','), drinking.join(','), round].join('|'))
+  const rand = seededRandom([todayKey(), going.join(','), round].join('|'))
   const pick = pool => pool[Math.floor(rand() * pool.length)]
 
-  // terug: altijd iemand die niet drinkt, de BOB
-  const terug = sober.length ? pick(sober) : null
-  // heen: liefst een andere niet-drinker (die mag daarna wel drinken),
-  // pas als die er niet is iemand die drinkt (rijden vóór het drinken mag)
-  const others = sober.filter(id => id !== terug)
-  const heenPool = others.length ? others : drinking.length ? drinking : going
-  const heen = pick(heenPool)
+  // terug = de BOB; heen is iemand anders, die mag daarna drinken
+  const terug = pick(going)
+  const others = going.filter(id => id !== terug)
+  const heen = others.length ? pick(others) : terug
 
-  const why = []
-  if (drinking.length) why.push(`${list(drinking)}.`)
-  if (!terug) why.push('Niemand kan terugrijden. Regel een BOB of taxi.')
-  else if (heen === terug) why.push(`${nameOf(heen)} is de enige die kan rijden en is de BOB.`)
-  else {
-    why.push(drinkers.has(heen)
-      ? `${nameOf(heen)} rijdt heen vóór het drinken.`
-      : `${nameOf(heen)} rijdt heen en mag daarna drinken.`)
-    why.push(`${nameOf(terug)} is de BOB.`)
-  }
-  return { heen, terug, why: why.join(' ') }
+  const why = heen === terug
+    ? `${nameOf(heen)} is de enige en rijdt allebei de ritten. Geen drank dus.`
+    : `${nameOf(heen)} rijdt heen en mag daarna drinken. ${nameOf(terug)} rijdt terug en is de BOB.`
+  return { heen, terug, why }
 }
 
 function draw() {
@@ -111,8 +95,8 @@ function clearResult() {
 }
 
 // ---- render
-function chip(k, on, onClick, extra = '') {
-  const b = document.createElement('button'); b.type = 'button'; b.className = 'rit-chip ' + extra
+function chip(k, on, onClick) {
+  const b = document.createElement('button'); b.type = 'button'; b.className = 'rit-chip'
   b.textContent = k.name; b.setAttribute('aria-pressed', on)
   b.onclick = onClick
   return b
@@ -122,19 +106,8 @@ function render() {
   const pres = $('present'); pres.innerHTML = ''
   for (const k of kids) pres.append(chip(k, present.has(k.id), () => {
     present.has(k.id) ? present.delete(k.id) : present.add(k.id)
-    drinkers.delete(k.id)
     clearResult(); render()
   }))
-
-  const drink = $('drinkers'); drink.innerHTML = ''
-  for (const k of kids) {
-    if (!present.has(k.id)) continue
-    drink.append(chip(k, drinkers.has(k.id), () => {
-      drinkers.has(k.id) ? drinkers.delete(k.id) : drinkers.add(k.id)
-      clearResult(); render()
-    }, 'rit-chip--drink'))
-  }
-  if (!drink.children.length) drink.textContent = '—'
 
   const names = $('names')
   if (!names.contains(document.activeElement)) {
