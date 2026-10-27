@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Wie rijdt er?</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+</head>
+<body>
+  <div class="rit-wrap">
+    <header class="nav">
+      <a href="/" class="logo"><span class="logo__mark">J</span><span>jens.</span></a>
+      <span class="rit-label mono">Alleen op dit toestel</span>
+    </header>
+
+    <main class="rit">
+      <div class="rit-head">
+        <h1 class="rit-title">Wie rijdt <span class="rit-hl">er?</span></h1>
+        <p class="rit-sub">Eerlijk verdeeld, geen ruzie.</p>
+      </div>
+
+      <section>
+        <h2 class="rit-h2 mono">Wie gaat er mee?</h2>
+        <div class="rit-chips" id="present"></div>
+      </section>
+
+      <section>
+        <h2 class="rit-h2 mono">Welke rit?</h2>
+        <div class="rit-seg" id="dir">
+          <button type="button" data-dir="heen" aria-pressed="true">Heen</button>
+          <button type="button" data-dir="terug" aria-pressed="false">Terug</button>
+        </div>
+        <div class="rit-mode">Manier: <strong id="modeName">Eerlijk</strong> · <button type="button" id="modeBtn">wissel</button></div>
+      </section>
+
+      <section class="rit-stage">
+        <div class="rit-plate" id="plate" aria-live="polite">
+          <div class="rit-plate__eu">
+            <svg width="26" height="26" viewBox="0 0 26 26" aria-hidden="true"><g fill="#FFC52E">
+              <circle cx="13" cy="3" r="1.5"/><circle cx="18" cy="4.3" r="1.5"/><circle cx="21.7" cy="8" r="1.5"/><circle cx="23" cy="13" r="1.5"/><circle cx="21.7" cy="18" r="1.5"/><circle cx="18" cy="21.7" r="1.5"/><circle cx="13" cy="23" r="1.5"/><circle cx="8" cy="21.7" r="1.5"/><circle cx="4.3" cy="18" r="1.5"/><circle cx="3" cy="13" r="1.5"/><circle cx="4.3" cy="8" r="1.5"/><circle cx="8" cy="4.3" r="1.5"/></g></svg>
+            NL
+          </div>
+          <div class="rit-plate__name" id="plateName">? - ? - ?</div>
+        </div>
+        <p class="rit-why" id="why">Tik op de knop om te kiezen.</p>
+        <button type="button" class="btn btn--dark rit-go" id="go">Kies de bestuurder</button>
+        <div class="rit-after" id="after" hidden>
+          <button type="button" class="btn btn--light btn--sm" id="swapBtn">Beurt weggeven</button>
+          <button type="button" class="btn btn--light btn--sm" id="undoBtn">Ongedaan maken</button>
+        </div>
+        <div class="rit-swaplist" id="swaplist" hidden></div>
+      </section>
+
+      <section class="rit-card">
+        <h2 class="rit-h2 mono">Stand</h2>
+        <div class="rit-rows" id="rows"></div>
+        <p class="rit-next" id="next"></p>
+      </section>
+
+      <section class="rit-card">
+        <h2 class="rit-h2 mono">Logboek</h2>
+        <ul class="rit-log" id="log"></ul>
+      </section>
+
+      <section class="rit-card">
+        <details>
+          <summary>Namen en instellingen</summary>
+          <div class="rit-names" id="names"></div>
+          <div class="rit-danger">
+            <button type="button" class="btn btn--light btn--sm rit-red" id="resetBtn">Alles op nul zetten</button>
+            <span id="resetConfirm" hidden>Zeker weten? <button type="button" class="btn btn--sm btn--dark rit-red" id="resetYes">Ja, wissen</button> <button type="button" class="btn btn--light btn--sm" id="resetNo">Nee</button></span>
+          </div>
+          <p class="rit-note">De stand wordt in deze browser op dit toestel bewaard.</p>
+        </details>
+      </section>
+    </main>
+  </div>
+  <script type="module" src="/src/wie-rijdt/main.js"></script>
+</body>
+</html>

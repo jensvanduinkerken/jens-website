@@ -1,0 +1,106 @@
+/* =========================================================
+   WIE RIJDT ER? — verborgen pagina, bouwt op de tokens uit index.css
+   ========================================================= */
+[hidden] { display: none !important; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, input:focus-visible, summary:focus-visible { outline: 3px solid var(--blue); outline-offset: 3px; }
+
+.rit-wrap {
+  max-width: 560px; margin-inline: auto;
+  padding-inline: max(20px, env(safe-area-inset-left, 0px)) max(20px, env(safe-area-inset-right, 0px));
+  padding-bottom: 64px;
+}
+.rit-label { font-size: 12px; color: var(--muted); }
+.rit { display: flex; flex-direction: column; gap: 32px; }
+
+.rit-head { display: flex; flex-direction: column; gap: 10px; padding-top: 8px; }
+.rit-title { font-size: clamp(52px, 14vw, 76px); line-height: .9; }
+.rit-hl {
+  display: inline-block; background: var(--accent); border: 3px solid var(--ink); border-radius: 18px;
+  padding: 0 .15em .06em; transform: rotate(-3deg); box-shadow: 6px 6px 0 var(--ink);
+  animation: pop .8s var(--bounce) .2s both;
+}
+.rit-sub { font-size: 18px; color: var(--muted); }
+.rit-h2 { font-size: 13px; font-weight: 500; letter-spacing: .04em; color: var(--muted); margin-bottom: 12px; text-transform: uppercase; }
+
+/* Wie gaat er mee */
+.rit-chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.rit-chip {
+  min-height: 44px; padding: 0 18px; border: var(--border); border-radius: 999px;
+  background: transparent; color: var(--muted); border-style: dashed; font-weight: 600;
+  transition: translate .15s, box-shadow .15s;
+}
+.rit-chip[aria-pressed="true"] { background: var(--card); color: var(--ink); border-style: solid; box-shadow: 3px 3px 0 var(--ink); }
+.rit-chip[aria-pressed="true"]::before { content: "✓ "; }
+
+/* Heen / terug */
+.rit-seg { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 5px; border: var(--border); border-radius: 999px; background: var(--card); }
+.rit-seg button { min-height: 44px; border: 0; border-radius: 999px; background: transparent; font-weight: 600; color: var(--muted); }
+.rit-seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+
+.rit-mode { display: flex; gap: 8px; align-items: center; margin-top: 12px; font-size: 15px; color: var(--muted); }
+.rit-mode strong { color: var(--ink); }
+.rit-mode button { padding: 0; border: 0; background: none; font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.rit-mode button:hover { color: var(--blue); }
+
+/* Het kenteken */
+.rit-stage { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+.rit-plate {
+  width: 100%; display: grid; grid-template-columns: 46px 1fr;
+  background: var(--accent); border: 3px solid var(--ink); border-radius: 14px; overflow: hidden;
+  box-shadow: var(--shadow); transform: rotate(-1.5deg);
+}
+.rit-plate__eu {
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding-bottom: 8px;
+  background: var(--blue); color: var(--card); border-right: 3px solid var(--ink);
+  font-family: var(--font-mono); font-size: 15px;
+}
+.rit-plate__eu svg { margin-block: 8px auto; }
+.rit-plate__name {
+  min-width: 0; padding: 14px 10px; text-align: center; text-transform: uppercase;
+  font-family: var(--font-display); font-weight: 800; font-size: clamp(40px, 12vw, 60px); line-height: 1.05; letter-spacing: -.02em;
+  overflow-wrap: anywhere;
+}
+.rit-plate.is-spin .rit-plate__name { filter: blur(.6px); }
+.rit-plate.is-win { animation: rit-pop .5s var(--bounce); }
+@keyframes rit-pop { 0% { scale: .94; } 60% { scale: 1.04; } 100% { scale: 1; } }
+
+.rit-why { min-height: 1.5em; text-align: center; color: var(--muted); font-size: 16px; text-wrap: balance; }
+.rit-go { width: 100%; min-height: 64px; font-family: var(--font-display); font-weight: 800; font-size: 24px; letter-spacing: -.02em; }
+.rit-go:disabled { opacity: .5; cursor: default; translate: 0 0; }
+.rit-after, .rit-swaplist { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+.rit-swaplist p { width: 100%; text-align: center; color: var(--muted); font-size: 15px; }
+
+/* Kaarten */
+.rit-card { padding: 24px; background: var(--card); border: var(--border); border-radius: var(--radius-card); box-shadow: var(--shadow); }
+
+.rit-rows { display: flex; flex-direction: column; gap: 12px; }
+.rit-row { display: grid; grid-template-columns: 7.5rem 1fr 2.2rem; gap: 12px; align-items: center; }
+.rit-row__n { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-weight: 600; }
+.rit-bar { height: 16px; border: var(--border); border-radius: 999px; background: var(--paper); overflow: hidden; }
+.rit-bar i { display: block; height: 100%; background: var(--accent); border-right: 2px solid var(--ink); transition: width .4s var(--ease-out); }
+.rit-row__c { text-align: right; font-variant-numeric: tabular-nums; }
+.rit-next { margin-top: 16px; padding-top: 14px; border-top: 2px dashed var(--ink); font-size: 15px; color: var(--muted); }
+.rit-next b { color: var(--ink); }
+
+.rit-log { list-style: none; margin: 0; padding: 0; }
+.rit-log li { display: grid; grid-template-columns: 4.8rem 1fr auto; gap: 12px; align-items: baseline; padding: 11px 0; border-top: 2px dashed var(--ink); font-size: 16px; }
+.rit-log li:first-child { border-top: 0; padding-top: 0; }
+.rit-log time { font-size: 13px; color: var(--muted); }
+.rit-log__d { padding: 2px 10px; border: 1.5px solid var(--ink); border-radius: 999px; font-size: 12px; }
+.rit-log__s { display: block; color: var(--muted); font-size: 13px; }
+.rit-log li.rit-empty { display: block; color: var(--muted); font-size: 15px; }
+
+details summary { cursor: pointer; font-family: var(--font-display); font-weight: 800; font-size: 22px; letter-spacing: -.02em; }
+.rit-names { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; }
+.rit-names input { width: 100%; min-height: 48px; padding: 0 14px; font: inherit; border: var(--border); border-radius: 14px; background: var(--paper); color: var(--ink); }
+.rit-danger { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 18px; font-size: 15px; }
+.rit-danger span { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.rit-red { color: #C0392B; }
+.btn--dark.rit-red { background: #C0392B; color: var(--card); }
+.rit-note { margin-top: 14px; font-size: 14px; color: var(--muted); }
+
+@media (max-width: 420px) {
+  .rit-row { grid-template-columns: 5.5rem 1fr 2rem; }
+  .rit-names { grid-template-columns: 1fr; }
+}
