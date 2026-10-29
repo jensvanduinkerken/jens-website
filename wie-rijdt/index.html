@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Wie rijdt er?</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+  <script type="module" crossorigin src="/assets/wieRijdt-D1ACMT5q.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/index-Cxu_dO9M.js">
+  <link rel="stylesheet" crossorigin href="/assets/index-Ofvsk30P.css">
+  <link rel="stylesheet" crossorigin href="/assets/wieRijdt-C7zkn6hS.css">
+</head>
+<body>
+  <div class="rit-wrap">
+    <header class="nav">
+      <a href="/" class="logo"><span class="logo__mark">J</span><span>jens.</span></a>
+      <span class="rit-label mono" id="today"></span>
+    </header>
+
+    <main class="rit">
+      <div class="rit-head">
+        <h1 class="rit-title">Wie rijdt <span class="rit-hl">er?</span></h1>
+        <p class="rit-sub">Het lot beslist. Op elke telefoon hetzelfde.</p>
+      </div>
+
+      <section>
+        <h2 class="rit-h2 mono">Wie gaat er mee?</h2>
+        <div class="rit-chips" id="present"></div>
+        <p class="rit-hint">Wie heen rijdt mag daarna drinken. Wie terug rijdt is de BOB.</p>
+      </section>
+
+      <section class="rit-stage">
+        <div class="rit-plates">
+          <div>
+            <p class="rit-plate-label mono">Heen</p>
+            <div class="rit-plate" id="plate-heen" aria-live="polite">
+              <div class="rit-plate__eu" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 26 26"><g fill="#FFC52E"><circle cx="13" cy="3" r="1.5"/><circle cx="18" cy="4.3" r="1.5"/><circle cx="21.7" cy="8" r="1.5"/><circle cx="23" cy="13" r="1.5"/><circle cx="21.7" cy="18" r="1.5"/><circle cx="18" cy="21.7" r="1.5"/><circle cx="13" cy="23" r="1.5"/><circle cx="8" cy="21.7" r="1.5"/><circle cx="4.3" cy="18" r="1.5"/><circle cx="3" cy="13" r="1.5"/><circle cx="4.3" cy="8" r="1.5"/><circle cx="8" cy="4.3" r="1.5"/></g></svg>
+                NL
+              </div>
+              <div class="rit-plate__name" id="name-heen">? - ? - ?</div>
+            </div>
+          </div>
+          <div>
+            <p class="rit-plate-label mono">Terug · BOB</p>
+            <div class="rit-plate rit-plate--r" id="plate-terug" aria-live="polite">
+              <div class="rit-plate__eu" aria-hidden="true">
+                <svg width="26" height="26" viewBox="0 0 26 26"><g fill="#FFC52E"><circle cx="13" cy="3" r="1.5"/><circle cx="18" cy="4.3" r="1.5"/><circle cx="21.7" cy="8" r="1.5"/><circle cx="23" cy="13" r="1.5"/><circle cx="21.7" cy="18" r="1.5"/><circle cx="18" cy="21.7" r="1.5"/><circle cx="13" cy="23" r="1.5"/><circle cx="8" cy="21.7" r="1.5"/><circle cx="4.3" cy="18" r="1.5"/><circle cx="3" cy="13" r="1.5"/><circle cx="4.3" cy="8" r="1.5"/><circle cx="8" cy="4.3" r="1.5"/></g></svg>
+                NL
+              </div>
+              <div class="rit-plate__name" id="name-terug">? - ? - ?</div>
+            </div>
+          </div>
+        </div>
+        <p class="rit-why" id="why">Tik op de knop om te kiezen.</p>
+        <button type="button" class="btn btn--dark rit-go" id="go">Kies de bestuurders</button>
+        <div class="rit-after" id="after" hidden>
+          <button type="button" class="btn btn--light btn--sm" id="againBtn">Opnieuw loten</button>
+          <span class="rit-round mono" id="round"></span>
+        </div>
+      </section>
+
+      <section class="rit-card">
+        <details>
+          <summary>Namen</summary>
+          <div class="rit-names" id="names"></div>
+          <p class="rit-note">Vul de namen op elke telefoon in dezelfde volgorde in. De uitkomst hangt af van de datum, wie er meegaat en de lotingsronde. Dezelfde keuzes geven dus overal dezelfde bestuurders.</p>
+        </details>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
