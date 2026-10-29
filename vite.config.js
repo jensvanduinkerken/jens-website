@@ -7,8 +7,7 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: 'index.html',
-        // verborgen pagina: nergens gelinkt, alleen bereikbaar via de exacte url
-        wieRijdt: 'rit-fwgezser/index.html',
+        wieRijdt: 'wie-rijdt/index.html',
       },
     },
   },

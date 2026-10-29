@@ -5,6 +5,7 @@ const variantClass = {
   'narrow-tilt-r': 'card--narrow card--tilt-r',
   'narrow-tilt-l': 'card--narrow card--tilt-l',
   'wide-dark': 'card--wide card--dark card--offset',
+  'full': 'card--full',
 }
 
 function Media({ media }) {
@@ -13,6 +14,13 @@ function Media({ media }) {
   }
   if (media.blue) return <div className="card__media card__media--blue">{media.blue}</div>
   if (media.belt) return <div className="card__media card__media--belt">{media.belt}</div>
+  if (media.plate) {
+    return (
+      <div className="card__media card__media--plate">
+        <div className="plate"><span className="plate__eu mono">NL</span><span className="plate__text">{media.plate}</span></div>
+      </div>
+    )
+  }
   return <div className="card__media">{media.label}</div>
 }
 
@@ -21,7 +29,7 @@ function Links({ links }) {
   return (
     <div className="card__links">
       {links.map(l => (
-        <a key={l.href} href={l.href} className="card__link" target="_blank" rel="noopener noreferrer">
+        <a key={l.href} href={l.href} className="card__link" {...(l.href.startsWith('/') ? {} : { target: '_blank', rel: 'noopener noreferrer' })}>
           {l.label}<span className="arr">→</span>
         </a>
       ))}

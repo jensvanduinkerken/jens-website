@@ -210,6 +210,22 @@ p { margin: 0; }
     repeating-linear-gradient(0deg, rgba(243,238,227,.08) 0 2px, transparent 2px 40px);
   animation: belt 1.6s linear infinite;
 }
+.card__media--plate { background: var(--blue); }
+.plate {
+  display: flex; align-items: stretch; transform: rotate(-4deg);
+  background: var(--accent); border: 3px solid var(--ink); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow);
+  transition: rotate .4s var(--bounce);
+}
+.card:hover .plate { rotate: 4deg; }
+.plate__eu { display: flex; align-items: flex-end; padding: 0 10px 8px; background: var(--blue); color: var(--card); border-right: 3px solid var(--ink); font-size: 14px; }
+.plate__text { padding: 12px 22px; font-family: var(--font-display); font-weight: 800; font-size: 44px; letter-spacing: -.02em; color: var(--ink); text-transform: uppercase; white-space: nowrap; }
+
+/* brede kaart over de hele rij: beeld links, tekst rechts */
+.card--full { grid-column: 1 / -1; display: grid; grid-template-columns: 5fr 7fr; column-gap: 40px; align-content: start; }
+.card--full > * { grid-column: 2; }
+.card--full .card__media { grid-column: 1; grid-row: 1 / span 4; height: auto; min-height: 260px; }
+.card--full .card__text { max-width: 640px; }
+
 .card__title { font-size: 48px; line-height: 1; letter-spacing: -.03em; }
 .card--wide .card__title { font-size: 56px; }
 .card__text { font-size: 18px; line-height: 1.5; max-width: 560px; }
@@ -333,7 +349,10 @@ p { margin: 0; }
   .section-head { flex-direction: column-reverse; align-items: flex-start; gap: 10px; }
   .section-meta { font-size: 13px; }
   .work__grid { grid-template-columns: 1fr; gap: 28px; }
-  .card--wide, .card--narrow { grid-column: auto; }
+  .card--wide, .card--narrow, .card--full { grid-column: auto; }
+  .card--full { display: flex; }
+  .card--full .card__media { height: 200px; min-height: 0; }
+  .plate__text { font-size: 30px; padding: 10px 16px; }
   .card { padding: 20px; gap: 16px; }
   .card:hover { translate: 0 -6px; box-shadow: 9px 9px 0 var(--ink); }
   .card--tilt-r { transform: rotate(1.2deg); margin-top: 0; }

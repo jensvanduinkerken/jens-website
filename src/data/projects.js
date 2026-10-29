@@ -1,5 +1,5 @@
-// variant: 'wide-accent' | 'narrow-tilt-r' | 'narrow-tilt-l' | 'wide-dark'
-// media (optioneel): { image } | { label } | { blue } | { belt }
+// variant: 'wide-accent' | 'narrow-tilt-r' | 'narrow-tilt-l' | 'wide-dark' | 'full'
+// media (optioneel): { image } | { label } | { blue } | { belt } | { plate }
 // list (optioneel): [{ name, what }]
 export const projects = [
   {
@@ -53,5 +53,16 @@ export const projects = [
     media: { belt: '[ RENDER 3D-FABRIEK ]' },
     tags: ['Three.js', 'WebGL'],
     links: [],
+  },
+  {
+    id: 'wie-rijdt',
+    variant: 'full',
+    type: 'Side project',
+    year: '2026',
+    title: 'Wie rijdt er?',
+    text: 'Met z\'n vieren één auto, en elke keer weer dezelfde discussie: wie rijdt er? En vooral: wie moet er terugrijden en mag dus niet drinken? Daar heb ik een kleine app voor gebouwd. Hij loot wie heen rijdt (die mag daarna drinken) en wie terug rijdt (de BOB, pech gehad). Het leukste stukje: er is geen database of account. De loting rekent met de datum en wie er meegaat, dus elke telefoon geeft toch dezelfde uitkomst. Geen ruzie meer, het lot heeft gesproken.',
+    media: { plate: 'Wie rijdt?' },
+    tags: ['JavaScript', 'Vite'],
+    links: [{ label: 'Probeer de app', href: '/wie-rijdt/' }],
   },
 ]
