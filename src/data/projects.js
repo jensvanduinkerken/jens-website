@@ -46,13 +46,13 @@ export const projects = [
   {
     id: 'fabriek',
     variant: 'wide-dark',
-    type: 'Experiment',
-    badge: 'in de maak',
+    type: 'Side project',
+    year: '2026',
     title: 'De 3D-fabriek',
-    text: 'Een portfolio als fabriek in Three.js, waar je als bezoeker doorheen rijdt. Nog lang niet af, wel heel leuk om aan te werken.',
-    media: { belt: '[ RENDER 3D-FABRIEK ]' },
+    text: 'Mijn portfolio als fabriek in Three.js. Je rijdt met een heftruck door de hallen en in elk gekleurd vak ontdek je een stukje over mij. Liever gewoon scrollen? Er is ook een klassieke versie.',
+    media: { image: '/assets/images/fabriek.jpg' },
     tags: ['Three.js', 'WebGL'],
-    links: [],
+    links: [{ label: 'Rij door de fabriek', href: 'https://portfolio-fabriek.vercel.app' }],
   },
   {
     id: 'wie-rijdt',

@@ -242,6 +242,8 @@ p { margin: 0; }
 .card__link { display: inline-flex; align-items: center; min-height: 48px; font-weight: 600; font-size: 18px; }
 .card__link .arr { display: inline-block; margin-left: 6px; transition: translate .2s; }
 .card__link:hover .arr { translate: 8px 0; }
+.card--dark .card__link { color: var(--paper); }
+.card--dark .card__link:hover { color: var(--accent); }
 
 /* =========================================================
    OVER MIJ
