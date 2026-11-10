@@ -1,5 +1,5 @@
-// variant: 'wide-accent' | 'narrow-tilt-r' | 'narrow-tilt-l' | 'wide-dark' | 'full'
-// media (optioneel): { image } | { label } | { blue } | { belt } | { plate }
+// variant: 'wide-accent' | 'narrow-tilt-r' | 'narrow-tilt-l' | 'wide-dark' | 'full' | 'full-dark'
+// media (optioneel): { image } | { label } | { blue } | { belt } | { plate } | { button }
 // list (optioneel): [{ name, what }]
 export const projects = [
   {
@@ -64,5 +64,16 @@ export const projects = [
     media: { plate: 'Wie rijdt?' },
     tags: ['JavaScript', 'Vite'],
     links: [{ label: 'Probeer de app', href: '/wie-rijdt/' }],
+  },
+  {
+    id: 'knop',
+    variant: 'full-dark',
+    type: 'Game',
+    badge: 'in de maak',
+    title: 'De rode knop',
+    text: 'Mijn volgende grote project begint met bijna niks: een rode knop. Elke keer dat je erop drukt krijg je één punt, meer is het niet. Maar spelers kunnen feedback achterlaten over wat ze erbij willen of wat er beter kan, en bij elke update bouw ik het populairste idee erin. Zo wordt het één groot groepsproject, en niemand weet hoe de game er straks uitziet. Probeer de knop alvast.',
+    media: { button: true },
+    tags: [],
+    links: [],
   },
 ]

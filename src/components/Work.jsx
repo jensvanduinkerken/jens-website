@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { projects } from '../data/projects'
 
 const variantClass = {
@@ -6,6 +7,18 @@ const variantClass = {
   'narrow-tilt-l': 'card--narrow card--tilt-l',
   'wide-dark': 'card--wide card--dark card--offset',
   'full': 'card--full',
+  'full-dark': 'card--full card--dark',
+}
+
+// voorproefje van de knop-game: elke klik is één punt
+function RedButton() {
+  const [points, setPoints] = useState(0)
+  return (
+    <div className="card__media card__media--button">
+      <button type="button" className="red-button" onClick={() => setPoints(p => p + 1)} aria-label="Druk op de rode knop"></button>
+      <span className="red-button__score mono" aria-live="polite">{points} {points === 1 ? 'punt' : 'punten'}</span>
+    </div>
+  )
 }
 
 function Media({ media }) {
@@ -14,6 +27,7 @@ function Media({ media }) {
   }
   if (media.blue) return <div className="card__media card__media--blue">{media.blue}</div>
   if (media.belt) return <div className="card__media card__media--belt">{media.belt}</div>
+  if (media.button) return <RedButton />
   if (media.plate) {
     return (
       <div className="card__media card__media--plate">
